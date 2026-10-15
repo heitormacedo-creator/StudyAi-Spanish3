@@ -29,7 +29,48 @@ app.use('/api', (req, res, next) => {
 
 
 // Adaptador OpenRouter: preserva as rotas e o formato usado pelo site.
+async function 
 async function geminiOpenAIAdapter(options) {
+  const request = JSON.parse(options.body);
+  const apiKey = process.env.GEMINI_API_KEY;
+
+  if (!apiKey) {
+    throw new Error("GEMINI_API_KEY não configurada.");
+  }
+
+  const model = process.env.GEMINI_MODEL || "gemini-2.5-flash";
+
+  const response = await fetch(
+    "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${apiKey}`
+      },
+      body: JSON.stringify({
+        ...request,
+        model
+      })
+    }
+  );
+
+  const data = await response.json();
+
+  if (!response.ok) {
+    console.error("Erro Gemini:", {
+      status: response.status,
+      message: data.error?.message
+    });
+  }
+
+  return {
+    ok: response.ok,
+    status: response.status,
+    json: async () => data
+  };
+}
+(options) {
   const request = JSON.parse(options.body);
   const apiKey = process.env.OPENROUTER_API_KEY;
   if (!apiKey) throw new Error('OPENROUTER_API_KEY não configurada.');
