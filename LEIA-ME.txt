@@ -1,0 +1,1 @@
+STUDYAI OPENROUTER\nExtraia este ZIP. Envie os 7 arquivos separados ao GitHub, não o ZIP.\nNo Render configure OPENROUTER_API_KEY e OPENROUTER_MODEL=openrouter/free.\nVeja README.md para os detalhes.\n

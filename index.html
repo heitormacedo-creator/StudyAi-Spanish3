@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StudyAI — Espanhol</title>
+<style>
+:root{--navy:#10264f;--blue:#2463eb;--pale:#eef4ff;--gold:#f4c84b;--ink:#17243b;--muted:#6b7890;--line:#e4eaf3;--white:#fff;--green:#16845d}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;background:#f6f8fc;color:var(--ink)}
+button,input,textarea,select{font:inherit}button{cursor:pointer;border:0}
+.layout{display:grid;grid-template-columns:245px 1fr;min-height:100vh}
+aside{background:var(--navy);color:#fff;padding:26px 17px;display:flex;flex-direction:column;gap:24px}
+.brand{display:flex;align-items:center;gap:11px;padding:0 9px;font-weight:800;font-size:21px;letter-spacing:-.5px}
+.logo{height:38px;width:38px;border-radius:12px;background:var(--gold);color:var(--navy);display:grid;place-items:center;font-weight:900;font-size:19px}
+.brand small{display:block;font-size:11px;font-weight:500;color:#b9c9e7;letter-spacing:.7px;margin-top:2px}
+.nav-label{color:#91a8d0;text-transform:uppercase;font-size:10px;font-weight:800;letter-spacing:1.4px;padding:0 12px;margin:4px 0 -13px}
+.nav button{display:flex;align-items:center;gap:12px;width:100%;padding:12px;border-radius:11px;color:#dce7fb;background:transparent;text-align:left;margin:4px 0;font-size:14px}
+.nav button.active,.nav button:hover{background:#203d70;color:#fff}.nav .ico{width:20px;text-align:center;font-size:17px}
+.sidebar-note{margin-top:auto;padding:16px;background:#1a3768;border:1px solid #315184;border-radius:15px;font-size:12px;line-height:1.5;color:#d7e3fa}
+.sidebar-note b{display:block;color:#fff;font-size:13px;margin-bottom:5px}
+main{min-width:0;padding:28px clamp(18px,4vw,48px) 50px}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:28px}
+.crumb{font-size:13px;color:var(--muted)}.crumb b{color:var(--ink)}
+.profile{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:700}.avatar{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:#dce8ff;color:var(--blue);font-weight:800}
+h1{font-size:clamp(27px,3vw,36px);letter-spacing:-1.2px;margin:0 0 8px;color:var(--navy)}
+.subtitle{color:var(--muted);margin:0 0 25px;font-size:15px;line-height:1.6}
+.hero{background:linear-gradient(115deg,#10264f,#1e4b91);color:#fff;border-radius:22px;padding:27px 30px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:space-between;gap:20px;box-shadow:0 12px 28px #193d751c}
+.hero:after{content:"¡Hola!";position:absolute;right:28px;bottom:-29px;font-size:100px;font-weight:900;color:#ffffff0d;transform:rotate(-9deg)}
+.hero-text{position:relative;z-index:1;max-width:560px}.eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:1.7px;color:var(--gold);font-weight:800}
+.hero h2{font-size:clamp(22px,2.5vw,29px);margin:9px 0;letter-spacing:-.6px}.hero p{margin:0;color:#dbe7ff;font-size:14px;line-height:1.6;max-width:490px}
+.hero-art{font-size:72px;position:relative;z-index:1;filter:drop-shadow(0 8px 10px #0002)}
+.btn{background:var(--blue);color:white;padding:11px 16px;border-radius:10px;font-weight:750;font-size:13px;box-shadow:0 5px 12px #2463eb25}.btn:hover{filter:brightness(1.07)}.btn.gold{background:var(--gold);color:var(--navy);box-shadow:none}.btn.outline{background:#fff;border:1px solid var(--line);color:var(--navy);box-shadow:none}
+.section-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:30px 0 14px}.section-head h2{margin:0;font-size:19px;letter-spacing:-.4px}.section-head span{font-size:12px;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:19px;box-shadow:0 4px 14px #203c6c06;min-width:0}
+.topic-icon{width:42px;height:42px;border-radius:12px;background:var(--pale);display:grid;place-items:center;font-size:21px;margin-bottom:13px}
+.card h3{font-size:15px;margin:0 0 7px}.card p{font-size:12px;color:var(--muted);line-height:1.55;margin:0 0 15px}
+.card .link{color:var(--blue);font-weight:750;background:transparent;font-size:12px;padding:0}
+.progress{height:6px;background:#edf1f8;border-radius:20px;overflow:hidden;margin:12px 0 7px}.progress span{height:100%;display:block;background:var(--blue);border-radius:20px}
+.smallrow{display:flex;justify-content:space-between;font-size:11px;color:var(--muted)}
+.two-col{display:grid;grid-template-columns:1.1fr .9fr;gap:16px}
+.list-item{display:flex;gap:12px;align-items:flex-start;padding:13px 0;border-bottom:1px solid #eef1f7}.list-item:last-child{border:0}
+.dot{width:31px;height:31px;border-radius:10px;background:#fff5d7;color:#8b6500;display:grid;place-items:center;flex-shrink:0}
+.list-item b{display:block;font-size:13px;margin-bottom:4px}.list-item small{color:var(--muted);font-size:12px;line-height:1.5}
+.page{display:none}.page.active{display:block}
+.pill{display:inline-flex;padding:5px 9px;border-radius:99px;background:#eaf7f1;color:var(--green);font-size:11px;font-weight:800}
+.field{width:100%;border:1px solid #dce4f0;border-radius:10px;padding:12px;background:#fff;color:var(--ink);outline:none}.field:focus{border-color:var(--blue);box-shadow:0 0 0 3px #2463eb18}
+label{display:block;font-size:12px;font-weight:750;margin:13px 0 7px}
+.flashcard-stage{perspective:1200px;margin:18px 0 14px}.flashcard{position:relative;min-height:330px;width:100%;transform-style:preserve-3d;transition:transform .65s cubic-bezier(.2,.75,.25,1);cursor:pointer;outline:none}.flashcard.flipped{transform:rotateY(180deg)}.flashcard:focus-visible{outline:3px solid #2463eb;outline-offset:4px;border-radius:20px}.flashcard-face{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:clamp(22px,5vw,48px);border:1px solid #dce7fb;border-radius:20px;backface-visibility:hidden;-webkit-backface-visibility:hidden;box-shadow:0 14px 32px #203c6c12;overflow:auto}.flashcard-front{background:linear-gradient(135deg,#edf4ff,#fff)}.flashcard-back{transform:rotateY(180deg);background:linear-gradient(145deg,#edf9f3,#fff);border-color:#ccebdc}.flashcard-face .fc-label{font-size:11px;text-transform:uppercase;letter-spacing:1.8px;font-weight:850;color:var(--blue);margin-bottom:16px}.flashcard-back .fc-label{color:var(--green)}.flashcard-face strong{font-size:clamp(27px,4vw,38px);line-height:1.25;color:var(--navy);overflow-wrap:anywhere}.flashcard-face small{display:block;color:var(--muted);margin-top:18px;font-size:13px;line-height:1.6}.fc-explanation{max-width:620px;margin-top:15px;padding-top:14px;border-top:1px solid #dce9e2;color:#43536a;font-size:14px;line-height:1.7}.fc-explanation .fc-section{margin:10px 0;text-align:left}.fc-explanation .fc-section b{display:block;color:#17335d;font-size:12px;margin-bottom:3px}.fc-explanation .fc-section p{margin:0;color:#43536a;font-size:13px;line-height:1.6}.example-box{background:#f4f8ff;border:1px solid #dce7fb;padding:12px;border-radius:10px;margin:10px 0}.flashcard-editor{border-top:1px solid var(--line);margin-top:22px;padding-top:18px}.flashcard-editor h3{margin-bottom:8px}.editor-field-help{display:block;font-size:11px;line-height:1.45;color:var(--muted);margin-top:5px}.editor-example{background:#f5f8ff;border:1px solid #dce7fb;border-radius:12px;padding:13px;margin-top:12px;font-size:12px;line-height:1.65}.editor-field-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 14px}@media(max-width:680px){.editor-field-grid{grid-template-columns:1fr}}.fc-actions{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}.fc-actions .btn{flex:1}.fc-rating{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}.fc-rating .btn{flex:1;min-width:130px}.fc-session-summary{margin-top:18px}.fc-summary-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:14px 0}.fc-stat{border:1px solid var(--line);border-radius:14px;padding:14px;text-align:center;background:#fff}.fc-stat strong{display:block;font-size:25px;color:var(--navy)}.fc-stat span{font-size:12px;color:var(--muted)}.fc-review-item{padding:13px 0;border-bottom:1px solid var(--line)}.fc-review-item:last-child{border-bottom:0}.fc-review-item strong{display:block;margin-bottom:5px}.fc-review-item p{margin:5px 0;color:var(--muted);font-size:13px;line-height:1.55}.fc-start-note{font-size:12px;color:var(--muted);text-align:center;margin:0 0 8px}
+.options{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:15px 0}.option{padding:12px;border:1px solid var(--line);border-radius:10px;text-align:left;background:#fff;color:var(--ink)}.option:hover{border-color:var(--blue);background:#f5f8ff}
+.feedback{padding:12px;border-radius:10px;font-size:13px;margin:12px 0}.feedback.good{background:#eaf8f0;color:#126747}.feedback.bad{background:#fff1ef;color:#a33225}
+.chatbox{display:flex;flex-direction:column;gap:12px}.messages{min-height:250px;max-height:380px;overflow:auto;padding:15px;background:#f7f9fd;border-radius:13px;border:1px solid var(--line)}
+.msg{max-width:90%;padding:12px 14px;border-radius:13px;font-size:13px;line-height:1.6;margin:7px 0;white-space:pre-wrap}.msg.ai{background:#fff;border:1px solid var(--line)}.msg.user{background:var(--blue);color:#fff;margin-left:auto}
+.chatrow{display:flex;gap:9px}.chatrow input{flex:1;min-width:0}
+.notice{font-size:12px;color:var(--muted);line-height:1.6;margin-top:12px}
+
+.summary-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:15px}.summary-checks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:10px}.summary-checks label{display:flex;align-items:center;gap:8px;margin:0;padding:10px;border:1px solid var(--line);border-radius:10px;font-weight:600;background:#fff}.summary-checks input{accent-color:var(--blue)}.summary-result h3{margin:20px 0 8px;color:var(--navy)}.summary-result p,.summary-result li{font-size:14px;line-height:1.75;white-space:pre-wrap;overflow-wrap:anywhere}.summary-result ul{padding-left:22px}.summary-term{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:10px;padding:10px 0;border-bottom:1px solid var(--line);font-size:13px;line-height:1.6}.summary-history-item{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}.summary-history-item:last-child{border-bottom:0}.summary-history-item p{margin:4px 0 0;font-size:12px;color:var(--muted)}.summary-status{font-size:13px;line-height:1.6;margin-top:12px;color:var(--muted)}@media(max-width:680px){.summary-layout{grid-template-columns:1fr}.summary-checks{grid-template-columns:1fr}.summary-term{grid-template-columns:1fr;gap:2px}}
+
+@media(max-width:950px){.layout{grid-template-columns:190px 1fr}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero-art{font-size:55px}}
+@media(max-width:680px){.layout{display:block}aside{padding:14px;gap:13px}.brand{padding:0 4px}.nav-label,.sidebar-note{display:none}.nav{display:flex;overflow-x:auto;gap:5px}.nav button{white-space:nowrap;width:auto;flex-shrink:0;padding:9px 11px;margin:0;font-size:12px}.nav .ico{width:auto}main{padding:21px 15px 35px}.topbar{margin-bottom:22px}.hero{padding:22px;align-items:flex-start}.hero-art{display:none}.grid,.two-col{grid-template-columns:1fr}.section-head{margin-top:24px}.profile .profile-name{display:none}.options{grid-template-columns:1fr}}
+
+.fixed-content-btn{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);z-index:50;background:#f4c84b;color:#10264f;padding:13px 20px;border-radius:999px;font-weight:850;box-shadow:0 8px 28px #10264f35;white-space:nowrap}
+.editor-overlay{display:none;position:fixed;inset:0;z-index:100;background:#0b1735a8;padding:18px;overflow:auto;align-items:center;justify-content:center}.editor-overlay.open{display:flex}.editor-modal{max-height:90vh;overflow-y:auto;background:#fff;border-radius:20px;width:min(720px,100%);max-height:94vh;overflow:auto;padding:24px;box-shadow:0 24px 70px #0003}.editor-top{display:flex;align-items:flex-start;justify-content:space-between;gap:14px}.editor-top h2{margin:0;color:var(--navy)}.editor-modal textarea{min-height:145px;resize:vertical}.editor-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.editor-note{font-size:12px;line-height:1.5;color:var(--muted)}
+@media(max-width:680px){.fixed-content-btn{bottom:10px;padding:12px 16px}.editor-modal{padding:18px}}
+.exam-option{display:flex;align-items:flex-start;gap:10px;padding:12px;border:1px solid var(--line);border-radius:12px;margin:8px 0;cursor:pointer;background:#fff}.exam-option:has(input:checked){border-color:var(--blue);background:#f2f7ff}.exam-option input{margin-top:4px}.exam-text-answer{min-height:100px}.exam-palette-btn{min-width:42px;flex:0 0 auto}.exam-result-item{border-top:1px solid var(--line);padding:14px 0}.exam-result-item p{line-height:1.6;margin:6px 0}.exam-status-error{color:#b42318}.exam-status-success{color:#16845d}.exam-review-block{background:#f7f9fc;border:1px solid var(--line);border-radius:12px;padding:12px;margin:10px 0}
+@media(max-width:680px){.exam-palette-btn{min-width:36px;padding:9px}}
+
+
+#defaultTopicGrid[hidden],#topicContent[hidden],#activeContentStudyView[hidden],[hidden]{display:none!important}
+</style>
+
+<style id="cleanUI">
+.more-opts{margin:14px 0 0}
+.more-opts>summary{cursor:pointer;font-weight:700;font-size:13px;color:var(--blue);padding:6px 0;list-style:none}
+.more-opts>summary::-webkit-details-marker{display:none}
+.more-opts>summary:before{content:"⚙ "}
+.more-opts[open]>summary{margin-bottom:8px}
+.more-opts>.more-body{padding-top:4px}
+.notice:empty{display:none}
+.summary-layout{grid-template-columns:minmax(0,1fr)!important}
+.hist-wrap{margin-top:16px}
+.hist-wrap>summary{cursor:pointer;font-weight:700;font-size:13px;color:var(--muted);padding:6px 2px}
+.hist-wrap>.card{margin-top:8px}
+</style>
+</head>
+<body>
+<div class="layout">
+<aside>
+  <div class="brand"><div class="logo">S</div><div>StudyAI<small>ESPAÑOL • APRENDER JUNTOS</small></div></div>
+  <div class="nav-label">Menu principal</div>
+  <nav class="nav">
+    <button class="active" data-page="inicio"><span class="ico">⌂</span>Início</button>
+    <button data-page="resumosIA"><span class="ico">✎</span>Resumos com IA</button>
+    <button data-page="chat"><span class="ico">✦</span>Chat com IA</button>
+    <button data-page="flashcards"><span class="ico">▧</span>Flashcards</button>
+    <button data-page="voz"><span class="ico">🎙</span>Falar e praticar</button>
+    <button data-page="conversaIA"><span class="ico">💬</span>Conversação IA</button>
+    <button data-page="quiz"><span class="ico">✓</span>Praticar</button>
+    <button data-page="plano"><span class="ico">▦</span>Plano de estudos</button>
+  </nav>
+  <div class="sidebar-note"><b>✨ ¡Tú puedes!</b>Um pouquinho de espanhol todos os dias já faz diferença. Vamos aprender no seu ritmo.</div>
+</aside>
+<main>
+  <div class="topbar"><div class="crumb">Área de estudos / <b>Espanhol</b></div><div class="profile"><div class="avatar">ES</div><span class="profile-name">Minha área de estudos</span></div></div>
+  <section class="page active" id="inicio">
+    <h1>¡Hola! Vamos estudar espanhol.</h1>
+    <p class="subtitle">Aprenda o conteúdo da prova com explicações simples, exemplos e atividades para praticar.</p>
+    <div class="hero"><div class="hero-text"><div class="eyebrow">SEU ESPAÇO DE APRENDIZAGEM</div><h2>¡Aprender español puede ser fácil!</h2><p>Cole seu material do Sabin Digital e escolha a ferramenta que combina com seu jeito de estudar.</p><br><button class="btn gold" onclick="go('resumosIA')">Começar a estudar →</button></div><div class="hero-art">🇪🇸</div></div>
+    <div class="section-head"><h2>Seu conteúdo de estudo</h2><button class="btn outline" type="button" onclick="openContentEditor()">✏️ Trocar conteúdo</button></div>
+    <div class="card" id="homeActiveStudy" aria-live="polite"><b>Nenhum conteúdo selecionado</b><p>Abra “Trocar conteúdo”, copie seu material do Sabin Digital e salve. As ferramentas com IA poderão usar esse material.</p></div>
+    <div class="section-head"><h2>Como você quer estudar?</h2><span>Todas as ferramentas</span></div>
+    <div class="grid study-tools-grid">
+      <article class="card"><div class="topic-icon">✎</div><h3>Resumos com IA</h3><p>Transforme seu material em um resumo claro para revisar.</p><button class="btn outline" onclick="go('resumosIA')">Criar resumo →</button></article>
+      <article class="card"><div class="topic-icon">✦</div><h3>Chat com IA</h3><p>Faça perguntas sobre o material que você colou.</p><button class="btn outline" onclick="go('chat')">Perguntar à IA →</button></article>
+      <article class="card"><div class="topic-icon">▧</div><h3>Flashcards</h3><p>Pratique com cartões de perguntas e respostas.</p><button class="btn outline" onclick="go('flashcards')">Estudar cartões →</button></article>
+      <article class="card"><div class="topic-icon">🎙</div><h3>Falar e praticar</h3><p>Treine sua fala e revise respostas em voz alta.</p><button class="btn outline" onclick="go('voz')">Começar prática →</button></article>
+      <article class="card"><div class="topic-icon">💬</div><h3>Conversação com IA</h3><p>Converse e pratique espanhol com ajuda da IA.</p><button class="btn outline" onclick="go('conversaIA')">Conversar →</button></article>
+      <article class="card"><div class="topic-icon">✓</div><h3>Simulados e exercícios</h3><p>Teste o que aprendeu com questões sobre seu material.</p><button class="btn outline" onclick="go('quiz')">Praticar agora →</button></article>
+      <article class="card"><div class="topic-icon">▦</div><h3>Plano de estudos</h3><p>Organize o que estudar e acompanhe sua rotina.</p><button class="btn outline" onclick="go('plano')">Ver plano →</button></article>
+    </div>
+    <div class="section-head"><h2>Continue de onde parou</h2></div>
+    <div class="two-col">
+      <div class="card"><div style="display:flex;justify-content:space-between;gap:10px;align-items:center"><h3>Seu progresso de estudo</h3><span class="pill" id="progressLabel">Começando</span></div><p>Complete os tópicos e pratique para acompanhar sua evolução.</p><div class="progress"><span id="progressBar" style="width:0%"></span></div><div class="smallrow"><span id="progressText">0 de 5 tópicos concluídos</span><span id="progressPct">0%</span></div></div>
+      <div class="card"><h3>💡 Dica rápida</h3><p>Em espanhol, “la cocina” é a cozinha, enquanto “el dormitorio” é o quarto. Tente falar cada palavra em voz alta para memorizar melhor.</p><button class="btn outline" onclick="go('flashcards')">Praticar palavras</button></div>
+    </div>
+  </section>
+  <section class="page" id="conteudos">
+    <h1>Conteúdos de espanhol</h1><p class="subtitle">Resumos fáceis, exemplos e palavras importantes para revisar.</p>
+    <div class="card" id="topicContent"><div class="topic-icon">📚</div><h3>Escolha um tema para começar</h3><p>Selecione um dos conteúdos abaixo.</p></div>
+    <div class="card" id="activeContentStudyView" hidden style="margin-top:15px">
+      <div class="section-head" style="margin-top:0"><h2 id="activeContentStudyTitle">Seu conteúdo ativo</h2><span id="activeContentStudyMeta"></span></div>
+      <p id="activeContentStudyNotice" class="notice" style="margin-top:0">Este é o material que você salvou e que será usado pelas ferramentas com IA.</p>
+      <div id="activeContentStudyText" style="white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.8;font-size:14px;max-height:520px;overflow:auto;padding:14px;background:#f7f9fd;border:1px solid var(--line);border-radius:12px"></div>
+      <div class="fc-actions" style="margin-top:14px"><button class="btn" type="button" onclick="go('resumosIA')">Criar resumo com IA</button><button class="btn outline" type="button" onclick="go('flashcards')">Criar flashcards com IA</button><button class="btn outline" type="button" onclick="go('quiz')">Criar simulado com IA</button><button class="btn outline" type="button" onclick="openContentEditor()">Trocar conteúdo</button></div>
+    </div>
+    <div class="grid" id="defaultTopicGrid" style="margin-top:15px">
+      <article class="card"><div class="topic-icon">🏠</div><h3>La casa</h3><p>Partes da casa e objetos.</p><button class="btn outline" onclick="openTopic('casa')">Abrir resumo</button></article>
+      <article class="card"><div class="topic-icon">🔑</div><h3>Los posesivos</h3><p>Indicar a quem algo pertence.</p><button class="btn outline" onclick="openTopic('posesivos')">Abrir resumo</button></article>
+      <article class="card"><div class="topic-icon">👨‍👩‍👧</div><h3>La familia</h3><p>Nomes dos familiares.</p><button class="btn outline" onclick="openTopic('familia')">Abrir resumo</button></article>
+      <article class="card"><div class="topic-icon">🙂</div><h3>Descripción física</h3><p>Adjetivos para descrever pessoas.</p><button class="btn outline" onclick="openTopic('fisica')">Abrir resumo</button></article>
+      <article class="card"><div class="topic-icon">🔤</div><h3>Ser, tener y llevar</h3><p>Como usar os três verbos.</p><button class="btn outline" onclick="openTopic('verbos')">Abrir resumo</button></article>
+    </div>
+  </section>
+  <section class="page" id="resumosIA">
+    <h1>Resumos com IA</h1>
+    <p class="subtitle">Transforme seu material de espanhol em resumos personalizados, claros e fiéis ao conteúdo que você selecionou.</p>
+    <div class="summary-layout">
+      <div class="card">
+        <div class="section-head" style="margin-top:0"><h2>Conteúdo para resumir</h2><span>Fonte do resumo</span></div>
+        <div class="editor-example" id="summaryActiveInfo" aria-live="polite">Verificando conteúdo ativo…</div>
+        <details style="margin-top:10px"><summary style="cursor:pointer;font-weight:700">Ver texto completo do conteúdo ativo</summary><pre id="summaryActiveFull" style="white-space:pre-wrap;overflow-wrap:anywhere;font:inherit;font-size:13px;max-height:260px;overflow:auto;margin-top:10px"></pre></details>
+        <label for="summarySourceMode">Material</label>
+        <select class="field" id="summarySourceMode" onchange="updateSummarySourceMode()"><option value="active">Usar conteúdo ativo</option><option value="temporary">Inserir outro conteúdo</option></select>
+        <div id="summaryTemporaryFields" hidden>
+          <label for="summaryTempName">Nome do material temporário</label><input class="field" id="summaryTempName" maxlength="160" placeholder="Ex.: Revisão da unidade 3">
+          <label for="summaryTempText">Cole ou escreva o conteúdo</label><textarea class="field" id="summaryTempText" rows="7" maxlength="50000" placeholder="Cole aqui o texto que deseja resumir…" oninput="updateSummaryTempCount()" style="min-height:150px;resize:vertical"></textarea>
+          <small class="editor-field-help" id="summaryTempCount">0 caracteres · limite de 50.000</small>
+          <div class="fc-actions" style="margin-top:10px"><button class="btn outline" type="button" onclick="useActiveSummaryContent()">Usar conteúdo ativo novamente</button></div>
+        </div>
+        <button class="btn outline" type="button" onclick="openActiveStudyEditor()" style="margin-top:12px">Trocar conteúdo ativo</button>
+      </div>
+      <div class="card">
+        <div class="section-head" style="margin-top:0"><h2>Personalize o resumo</h2></div>
+        <label for="summaryLength">Tamanho</label><select class="field" id="summaryLength"><option value="curto">Curto</option><option value="médio" selected>Médio</option><option value="detalhado">Detalhado</option></select>
+        <label for="summaryFormat">Formato</label><select class="field" id="summaryFormat"><option value="texto organizado">Texto organizado</option><option value="tópicos">Tópicos</option><option value="esquema de revisão">Esquema de revisão</option><option value="perguntas e respostas">Perguntas e respostas</option></select>
+        <label for="summaryGoal">Objetivo</label><select class="field" id="summaryGoal"><option value="entender o conteúdo">Entender o conteúdo</option><option value="revisar para prova" selected>Revisar para prova</option><option value="memorizar conceitos">Memorizar conceitos</option></select>
+        <div class="summary-checks">
+          <label><input type="checkbox" id="summaryVocabulary" checked> Vocabulário em espanhol</label>
+          <label><input type="checkbox" id="summaryGrammar" checked> Regras gramaticais</label>
+          <label><input type="checkbox" id="summaryDefinitions" checked> Definições</label>
+          <label><input type="checkbox" id="summaryExamples"> Exemplos do material</label>
+        </div>
+        <div class="fc-actions" style="margin-top:16px"><button class="btn" id="summaryGenerateBtn" type="button" onclick="generateStudySummary()">✨ Gerar resumo com IA</button><button class="btn outline" type="button" onclick="clearStudySummary()">Limpar resultado</button></div>
+        <p class="summary-status" id="summaryStatus" aria-live="polite">A geração usa a IA configurada no servidor. O conteúdo temporário não altera o material ativo.</p>
+      </div>
+    </div>
+    <div class="card summary-result" id="summaryResultCard" hidden style="margin-top:16px" aria-live="polite"></div>
+    <div class="card" id="summaryHistoryCard" style="margin-top:16px"><div class="section-head" style="margin-top:0"><h2>Histórico de resumos</h2><button class="btn outline" type="button" onclick="clearStudySummaryHistory()">Apagar histórico</button></div><p class="notice">O histórico é salvo somente neste navegador; não há sincronização em nuvem.</p><div id="summaryHistoryList"><p>Nenhum resumo salvo neste navegador.</p></div></div>
+  </section>
+  <section class="page" id="chat">
+    <h1>Chat de espanhol</h1><p class="subtitle">Faça uma pergunta, peça um exemplo ou solicite uma explicação mais fácil.</p>
+    <div class="card chatbox"><div class="messages" id="messages"><div class="msg ai">¡Hola! 👋 Sou seu assistente de estudos de espanhol. Posso explicar os conteúdos desta página, criar exemplos e ajudar você a praticar.\n\nExperimente perguntar: “Qual é a diferença entre ser e tener?”</div></div><div class="chatrow"><input class="field" id="chatInput" placeholder="Escreva sua dúvida em português ou espanhol..." onkeydown="if(event.key==='Enter')sendChat()"><button class="btn" onclick="sendChat()">Enviar ↑</button></div><div class="notice">IA conectada ao servidor. Faça perguntas em português ou espanhol; ela pode explicar, corrigir frases e criar exercícios.</div></div>
+    <div class="section-head"><h2>Perguntas sugeridas</h2></div><div class="grid"><div class="card"><button class="link" onclick="ask('Explique os possessivos em espanhol com exemplos.')">Como funcionam os possessivos?</button></div><div class="card"><button class="link" onclick="ask('Qual é a diferença entre ser, tener e llevar?')">Quando usar ser, tener e llevar?</button></div><div class="card"><button class="link" onclick="ask('Me ajude a descrever uma pessoa em espanhol.')">Como descrever uma pessoa?</button></div></div>
+  </section>
+  <section class="page" id="flashcards">
+    <h1>Flashcards com IA</h1><p class="subtitle">Gere cartões personalizados usando o conteúdo ativo salvo ou um material temporário. A geração usa a IA do servidor StudyAI.</p>
+    <div class="card" id="aiFlashcardBuilder" style="margin-bottom:16px">
+      <div class="section-head" style="margin-top:0"><h2>Conteúdo para estudar</h2></div>
+      <div class="editor-example" id="fcActiveMaterialSummary" aria-live="polite"><b>Verificando conteúdo ativo…</b></div>
+      <details id="fcActiveMaterialDetails" style="margin-top:10px"><summary style="cursor:pointer;font-weight:700">Ver texto completo do conteúdo ativo</summary><pre id="fcActiveMaterialFull" style="white-space:pre-wrap;overflow-wrap:anywhere;font:inherit;font-size:13px;max-height:300px;overflow:auto;margin-top:10px"></pre></details>
+      <div class="editor-field-grid" style="margin-top:15px">
+        <div><label for="fcMaterialMode">Material para gerar</label><select class="field" id="fcMaterialMode" onchange="updateAIFCSourceMode()"><option value="active">Usar conteúdo ativo</option><option value="temporary">Inserir outro conteúdo</option></select></div>
+        <div><label for="aiFcAmount">Quantidade de cartões</label><select class="field" id="aiFcAmount"><option value="5">5 cartões</option><option value="10">10 cartões</option><option value="15">15 cartões</option><option value="20">20 cartões</option></select></div>
+        <div><label for="aiFcType">Tipo de cartão</label><select class="field" id="aiFcType"><option value="misto">Misto</option><option value="vocabulário">Vocabulário</option><option value="perguntas e respostas">Perguntas e respostas</option><option value="gramática">Gramática</option><option value="tradução">Tradução</option></select></div>
+        <div><label for="aiFcDifficulty">Dificuldade</label><select class="field" id="aiFcDifficulty"><option value="fácil">Fácil</option><option value="média" selected>Média</option><option value="difícil">Difícil</option></select></div>
+      </div>
+      <div id="fcTemporaryFields" hidden style="margin-top:14px">
+        <label for="aiFcTempName">Nome do material temporário</label><input class="field" id="aiFcTempName" maxlength="160" placeholder="Ex.: Revisão da unidade 3">
+        <label for="aiFcTempText">Cole ou escreva o conteúdo</label><textarea class="field" id="aiFcTempText" rows="8" maxlength="50000" placeholder="Cole aqui o texto que deseja transformar em flashcards…" style="min-height:170px;resize:vertical" oninput="updateAIFCTempCount()"></textarea>
+        <small class="editor-field-help" id="aiFcTempCount">0 caracteres · limite de 50.000 caracteres</small>
+        <div class="fc-actions" style="margin-top:10px"><button class="btn outline" type="button" onclick="useActiveAIFCContent()">Usar conteúdo ativo novamente</button><button class="btn" type="button" onclick="generateAIFlashcards(true)">Gerar flashcards com este conteúdo</button></div>
+      </div>
+      <div id="fcActiveActions" style="margin-top:14px"><button class="btn" id="generateAIFCBtn" type="button" onclick="generateAIFlashcards(false)">✨ Gerar flashcards com IA</button><button class="btn outline" type="button" style="margin-left:8px" onclick="openActiveStudyEditor()">Trocar conteúdo</button></div>
+      <p class="notice" id="aiFcStatus" aria-live="polite">A IA só será chamada quando você solicitar a geração. O conteúdo temporário não substitui o conteúdo ativo.</p>
+    </div>
+    <div class="card" id="aiFCSessionMeta" hidden><div class="smallrow"><span id="aiFCMaterialLabel">Material</span><span id="aiFCTypeLabel">Misto · Média</span></div><p class="notice" id="aiFCSourceNote" style="margin-bottom:0"></p></div>
+    <div class="card" id="aiFCSessionSummary" hidden aria-live="polite"></div>
+    <div class="card" id="aiFCReviewCard" hidden>
+      <div class="smallrow"><span id="aiFCProgress">Cartão 1 de 5</span><span id="aiFCReviewLabel">Pergunta</span></div>
+      <div class="flashcard-stage"><div class="flashcard" id="aiFCFlipCard" role="button" tabindex="0" aria-label="Flashcard. Toque para mostrar a resposta" onclick="flipAIFlashcard()" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipAIFlashcard()}"><div class="flashcard-face flashcard-front"><span class="fc-label">Pergunta</span><strong id="aiFCFront"></strong><small>Toque para revelar a resposta</small></div><div class="flashcard-face flashcard-back"><span class="fc-label">Resposta</span><strong id="aiFCBack"></strong><div class="fc-explanation" id="aiFCExplanation"></div></div></div></div>
+      <div class="fc-actions"><button class="btn outline" type="button" onclick="moveAIFlashcard(-1)">← Anterior</button><button class="btn gold" id="aiFCShowAnswer" type="button" onclick="flipAIFlashcard()">Mostrar resposta</button><button class="btn" type="button" onclick="moveAIFlashcard(1)">Próximo →</button></div>
+      <p class="notice" id="aiFCRatingHint">Depois de revelar a resposta, escolha sua avaliação. Nenhum cartão é marcado como aprendido automaticamente.</p>
+      <div class="fc-rating" id="aiFCRatingActions" hidden><button class="btn" type="button" style="background:#c24135" onclick="rateAIFlashcard('unknown')">Não sabia</button><button class="btn" type="button" style="background:#b7791f" onclick="rateAIFlashcard('almost')">Quase</button><button class="btn" type="button" style="background:#16845d" onclick="rateAIFlashcard('known')">Sabia</button></div>
+      <div class="fc-actions" style="margin-top:12px"><button class="btn outline" type="button" onclick="shuffleAIFlashcards()">🔀 Embaralhar</button><button class="btn outline" type="button" onclick="restartAIFlashcards()">↻ Reiniciar sessão</button></div>
+    </div>
+    <div class="section-head"><h2>Flashcards manuais</h2></div><p class="subtitle">Os cartões manuais já existentes continuam disponíveis abaixo; a geração por IA não apaga nem substitui seus cartões salvos.</p>
+    <div class="card" id="flashcardSetup" style="margin-bottom:16px"><h3>Personalize sua sessão</h3><p>Escolha o conteúdo e quantos cartões quer praticar nesta rodada.</p><div class="editor-field-grid"><div><label for="fcContentSelect">Conteúdo para estudar</label><select class="field" id="fcContentSelect" onchange="updateFlashcardSetup()"><option value="todos">Todos os conteúdos</option><option value="casa">La casa — casa e objetos</option><option value="posesivos">Los posesivos — possessivos</option><option value="familia">La familia — família</option><option value="fisica">Descripción física — aparência</option><option value="verbos">Ser, tener y llevar — verbos</option><option value="personalizados">Meus flashcards</option></select></div><div><label for="fcAmount">Quantidade de flashcards</label><input class="field" id="fcAmount" type="number" min="1" max="12" step="1" value="12" inputmode="numeric" oninput="validateFlashcardAmount()"><small class="editor-field-help" id="fcAmountHelp">Você pode escolher de 1 até 12 cartões.</small></div></div><button class="btn" style="margin-top:15px" onclick="startSelectedFlashcards()">Começar sessão →</button><p class="notice" id="fcSetupStatus" aria-live="polite">A sessão atual usa todos os conteúdos.</p></div>
+    <div class="card"><div class="smallrow"><span id="fcCount">Cartão 1 de 12</span><span id="fcTopicLabel">Todos os conteúdos</span></div><div class="flashcard-stage"><div class="flashcard" id="flashcard" role="button" tabindex="0" aria-label="Flashcard. Toque para mostrar a resposta" onclick="flipCard()" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard()}"><div class="flashcard-face flashcard-front"><span class="fc-label">Pergunta</span><strong id="fcFront">la cocina</strong><small id="fcHint">Pense na resposta e toque no cartão</small></div><div class="flashcard-face flashcard-back"><span class="fc-label">Resposta</span><strong id="fcBack">a cozinha</strong><div class="fc-explanation" id="fcExplanation">Tradução em português da palavra em espanhol.</div></div></div></div><p class="fc-start-note">Toque no cartão ou use “Mostrar resposta” para virar a carta.</p><div class="fc-actions"><button class="btn outline" onclick="prevCard()">← Anterior</button><button class="btn gold" id="showAnswerBtn" onclick="flipCard()">Mostrar resposta</button><button class="btn" id="nextCardBtn" onclick="nextCard()">Próximo →</button></div><div class="fc-rating" id="fcRatingActions" hidden><button class="btn" style="background:#c24135" onclick="rateCard('unknown')">Não sabia</button><button class="btn" style="background:#b7791f" onclick="rateCard('almost')">Quase</button><button class="btn" style="background:#16845d" onclick="rateCard('known')">Sabia</button></div><p class="notice" id="fcRatingHint" style="display:none">Depois de ver a resposta, marque como você se saiu para acompanhar seu resultado.</p></div>
+    <div class="card fc-session-summary" id="fcSessionSummary" hidden aria-live="polite"></div>
+    <div class="section-head"><h2>Crie seu próprio cartão</h2></div><div class="card"><p class="notice">Preencha os campos para deixar a resposta clara e fácil de estudar.</p><label for="newFront">Pergunta ou termo em espanhol</label><input id="newFront" class="field" placeholder="Ex.: ¿Cómo estás?"><label for="newBack">Resposta / tradução principal</label><input id="newBack" class="field" placeholder="Ex.: Como você está?"><label for="newUsage">Como / quando usar</label><textarea id="newUsage" class="field" rows="2" placeholder="Ex.: Cumprimento usado para perguntar como alguém está."></textarea><label for="newExampleEs">Exemplo em espanhol</label><input id="newExampleEs" class="field" placeholder="Ex.: Hola, ¿cómo estás hoy?"><label for="newExamplePt">Tradução do exemplo</label><input id="newExamplePt" class="field" placeholder="Ex.: Olá, como você está hoje?"><label for="newNote">Notas de uso / pegadinhas</label><textarea id="newNote" class="field" rows="2" placeholder="Ex.: Em situações formais, prefira ¿Cómo está usted?."></textarea><div class="editor-example"><b>Modelo do verso</b><br><b>Resposta:</b> significado direto<br><b>Como/quando usar:</b> situação de uso<br><b>Exemplo:</b> frase em espanhol + tradução<br><b>Nota:</b> dica ou erro comum</div><br><button class="btn" onclick="addCard()">Adicionar flashcard</button></div>
+  </section>
+  <section class="page" id="voz">
+    <h1>Falar e praticar</h1><p class="subtitle">Responda em voz alta em espanhol. A transcrição será avaliada pela IA, que vai explicar o que acertou e ajudar quando precisar revisar.</p>
+    <div class="card" id="voiceSetup">
+      <h3>Prepare sua prática oral</h3><p>Escolha o tema e a quantidade de perguntas. A pergunta aparece em português; tente dizer a resposta em espanhol.</p>
+      <div class="editor-field-grid"><div><label for="voiceContent">Conteúdo</label><select class="field" id="voiceContent"><option value="todos">Todos os conteúdos</option><option value="casa">La casa</option><option value="posesivos">Los posesivos</option><option value="familia">La familia</option><option value="fisica">Descripción física</option><option value="verbos">Ser, tener y llevar</option><option value="personalizados">Meus flashcards</option></select></div><div><label for="voiceAmount">Número de perguntas</label><input class="field" id="voiceAmount" type="number" min="1" max="12" value="5" inputmode="numeric"><small class="editor-field-help" id="voiceAmountHelp">Escolha quantas respostas quer falar.</small></div></div>
+      <button class="btn" style="margin-top:15px" onclick="startVoicePractice()">Começar prática oral 🎙</button><p class="notice" id="voiceSetupStatus" aria-live="polite">Permita o acesso ao microfone quando o navegador pedir. O reconhecimento de voz depende do navegador e da conexão.</p>
+    </div>
+    <div class="card" id="voiceExercise" hidden aria-live="polite">
+      <div class="smallrow"><span id="voiceProgress">Pergunta 1 de 5</span><span id="voiceTopicLabel">Todos os conteúdos</span></div>
+      <div class="editor-example" style="margin-top:15px"><b>Fale em espanhol:</b><p id="voicePrompt" style="font-size:22px;font-weight:800;color:var(--navy);margin:8px 0">a cozinha</p><small id="voiceHint">Tente responder sem olhar a resposta.</small></div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:15px"><button class="btn" id="voiceRecordBtn" onclick="recordVoiceAnswer()">🎙 Falar resposta</button><button class="btn outline" id="voiceStopBtn" onclick="stopVoiceRecognition()" disabled>Parar de ouvir</button><button class="btn outline" onclick="showVoiceAnswer()">Ver resposta</button></div>
+      <p class="notice" id="voiceListeningStatus" aria-live="polite">Toque em “Falar resposta” e diga a resposta em espanhol.</p>
+      <label for="voiceTranscript">O que foi reconhecido</label><textarea class="field" id="voiceTranscript" rows="2" placeholder="A transcrição aparecerá aqui. Se o microfone não funcionar, você pode digitar sua resposta."></textarea>
+      <button class="btn" id="voiceCheckBtn" onclick="evaluateVoiceAnswer()" style="margin-top:10px">Conferir com a IA</button>
+      <div id="voiceFeedback" style="margin-top:15px" aria-live="polite"></div>
+      <div class="fc-actions" style="margin-top:16px"><button class="btn outline" onclick="endVoicePractice()">Encerrar prática</button><button class="btn" id="voiceNextBtn" onclick="nextVoiceQuestion()" disabled>Próxima pergunta →</button></div>
+    </div>
+    <div class="card" id="voiceSummary" hidden aria-live="polite"></div>
+  </section>
+  <section class="page" id="conversaIA">
+    <h1>Conversação com IA</h1><p class="subtitle">Converse em espanhol por texto ou voz, receba correções úteis e pratique no seu ritmo.</p>
+    <div class="card" id="conversationSetup"><div class="section-head" style="margin-top:0"><h2>Prepare sua conversa</h2><span>IA pelo servidor</span></div>
+      <div class="editor-field-grid">
+        <div><label for="convMode">Modo de prática</label><select class="field" id="convMode"><option value="livre">Conversa livre</option><option value="material">Baseada no conteúdo escolar</option><option value="cotidiano">Situações cotidianas</option><option value="vocabulario">Treino de vocabulário</option><option value="perguntas">Perguntas sobre o material</option></select></div>
+        <div><label for="convLevel">Nível de espanhol</label><select class="field" id="convLevel"><option value="iniciante">Iniciante</option><option value="intermediário">Intermediário</option><option value="avançado">Avançado</option></select></div>
+        <div><label for="convScenario">Situação</label><select class="field" id="convScenario"><option value="apresentações">Apresentações</option><option value="escola">Na escola</option><option value="restaurante">No restaurante</option><option value="viagem">Em uma viagem</option><option value="livre">Escolher pela conversa</option></select></div>
+        <div><label for="convCorrections">Modo de correção</label><select class="field" id="convCorrections"><option value="imediata">Corrigir quando for útil</option><option value="final">Guardar feedback para o final</option><option value="leve">Corrigir só erros importantes</option></select></div>
+      </div>
+      <div class="editor-example" id="convActiveMaterial" aria-live="polite" style="margin-top:14px"><b>Conteúdo ativo</b><p style="margin:7px 0 0">Verificando o material salvo…</p></div>
+      <details style="margin-top:8px"><summary style="cursor:pointer;font-weight:700">Ver texto do conteúdo ativo</summary><pre id="convActiveFull" style="white-space:pre-wrap;overflow-wrap:anywhere;font:inherit;font-size:13px;max-height:220px;overflow:auto"></pre></details>
+      <div class="fc-actions" style="margin-top:14px"><button class="btn" id="convStartBtn" type="button" onclick="startConversationSession()">Iniciar conversa</button><button class="btn outline" type="button" onclick="openActiveStudyEditor()">Trocar conteúdo</button></div>
+      <p class="notice" id="convSetupStatus" aria-live="polite">O microfone só será ativado quando você tocar no botão correspondente. A conversa por texto funciona sem reconhecimento de voz.</p>
+    </div>
+    <div class="card" id="conversationRoom" hidden style="margin-top:16px"><div class="smallrow"><span id="convSessionLabel">Sessão em andamento</span><span id="convStatus" aria-live="polite">Aguardando sua mensagem</span></div>
+      <div class="messages" id="convMessages" aria-live="polite" aria-label="Mensagens da conversa" style="margin-top:12px;max-height:440px;min-height:280px"><div class="msg ai">¡Hola! Vamos a practicar español. ¿Cómo te llamas?</div></div>
+      <div class="editor-field-grid" style="margin-top:12px"><div><label for="convVoiceLocale">Variante de espanhol</label><select class="field" id="convVoiceLocale"><option value="es-ES">Espanha (es-ES)</option><option value="es-MX">México (es-MX)</option><option value="es-AR">Argentina (es-AR)</option><option value="es-CO">Colômbia (es-CO)</option></select></div><div><label for="convSpeakReply">Ler respostas da IA</label><select class="field" id="convSpeakReply"><option value="manual">Somente quando eu tocar em ouvir</option><option value="auto">Ler automaticamente após responder</option></select></div></div>
+      <label for="convInput">Sua mensagem em espanhol</label><textarea class="field" id="convInput" rows="3" maxlength="2000" placeholder="Escreva sua resposta em espanhol…" onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendConversationMessage()}"></textarea>
+      <div class="fc-actions" style="margin-top:10px"><button class="btn outline" id="convMicBtn" type="button" onclick="toggleConversationRecognition()">🎙 Falar</button><button class="btn" id="convSendBtn" type="button" onclick="sendConversationMessage()">Enviar mensagem ↑</button></div>
+      <p class="notice" id="convMicStatus" aria-live="polite">Se o reconhecimento de voz não estiver disponível, digite sua mensagem.</p>
+      <div class="fc-actions" style="margin-top:8px"><button class="btn outline" type="button" onclick="speakLastConversationReply()">🔊 Ouvir última resposta</button><button class="btn outline" type="button" onclick="stopConversationSpeech()">Parar áudio</button><button class="btn outline" type="button" onclick="pauseConversationSession()">Pausar</button><button class="btn outline" type="button" onclick="resumeConversationSession()">Continuar</button><button class="btn" type="button" onclick="endConversationSession()">Encerrar e ver resumo</button></div>
+    </div><div class="card" id="convSummary" hidden aria-live="polite" style="margin-top:16px"></div>
+    <div class="card" style="margin-top:16px"><h3>Privacidade e compatibilidade</h3><p class="notice">O microfone só é usado após sua ação e o áudio não é gravado pelo StudyAI. O reconhecimento depende do navegador; se não houver suporte, use o campo de texto. As conversas ficam neste navegador e não são sincronizadas na nuvem.</p><button class="btn outline" type="button" onclick="clearConversationHistory()">Apagar histórico local</button></div>
+  </section>
+  <section class="page" id="quiz">
+    <h1>Praticar para a prova</h1><p class="subtitle">Gere simulados personalizados com IA a partir do seu material e revise os erros.</p>
+    <div class="card" id="aiExamSetup" style="margin-bottom:16px">
+      <div class="section-head" style="margin-top:0"><h2>📝 Simulados com IA</h2><span class="pill">Geração pelo servidor</span></div>
+      <div class="editor-example" id="examActiveSummary" aria-live="polite"><b>Verificando conteúdo ativo…</b></div>
+      <details style="margin-top:9px"><summary style="cursor:pointer;font-weight:700">Ver conteúdo completo</summary><pre id="examActiveFull" style="white-space:pre-wrap;overflow-wrap:anywhere;font:inherit;font-size:13px;max-height:220px;overflow:auto"></pre></details>
+      <div class="editor-field-grid" style="margin-top:14px">
+        <div><label for="examMaterialMode">Material para o simulado</label><select class="field" id="examMaterialMode" onchange="updateExamSourceMode()"><option value="active">Usar conteúdo ativo</option><option value="temporary">Inserir outro conteúdo</option></select></div>
+        <div><label for="examAmount">Quantidade de questões</label><select class="field" id="examAmount"><option value="5">5 questões</option><option value="10">10 questões</option><option value="15">15 questões</option><option value="20">20 questões</option></select></div>
+        <div><label for="examType">Tipo de questão</label><select class="field" id="examType"><option value="misto">Misto</option><option value="multipla_escolha">Múltipla escolha</option><option value="verdadeiro_falso">Verdadeiro ou falso</option><option value="completar">Completar frases</option><option value="traducao">Tradução</option></select></div>
+        <div><label for="examDifficulty">Dificuldade</label><select class="field" id="examDifficulty"><option value="fácil">Fácil</option><option value="média" selected>Média</option><option value="difícil">Difícil</option></select></div>
+        <div><label for="examFocus">Assunto</label><select class="field" id="examFocus"><option value="revisão geral">Revisão geral</option><option value="vocabulário">Vocabulário</option><option value="gramática">Gramática</option><option value="interpretação">Interpretação</option></select></div>
+        <div><label for="examMode">Modo de realização</label><select class="field" id="examMode"><option value="simulado">Simulado — corrigir no final</option><option value="pratica">Prática — feedback após responder</option></select></div>
+      </div>
+      <div id="examTemporaryFields" hidden style="margin-top:14px">
+        <label for="examTempName">Nome do material temporário</label><input class="field" id="examTempName" maxlength="160" placeholder="Ex.: Revisão da unidade 3">
+        <label for="examTempText" style="margin-top:10px">Conteúdo para a prova</label><textarea class="field" id="examTempText" rows="7" maxlength="50000" placeholder="Cole o conteúdo para gerar questões…" oninput="updateExamTempCount()" style="min-height:150px;resize:vertical"></textarea>
+        <small class="editor-field-help" id="examTempCount">0 caracteres · limite de 50.000</small>
+      </div>
+      <div class="fc-actions" style="margin-top:14px"><button class="btn" id="examGenerateBtn" onclick="generateAIExam()">✨ Gerar simulado com IA</button><button class="btn outline" onclick="openActiveStudyEditor()">Trocar conteúdo ativo</button></div>
+      <p class="notice" id="examStatus" aria-live="polite">O simulado é gerado sob demanda. A chave de IA fica somente no servidor.</p>
+    </div>
+    <div class="card" id="aiExamRunner" hidden style="margin-bottom:16px" aria-live="polite">
+      <div class="smallrow"><span id="examProgress">Questão 1 de 5</span><span id="examMaterialLabel">Material</span></div>
+      <div class="progress" style="margin-top:12px"><span id="examProgressBar" style="width:0%"></span></div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px"><span class="pill" id="examTypeLabel">Misto</span><span class="pill" id="examDifficultyLabel">Média</span><span class="pill" id="examFlagLabel">Não marcada</span></div>
+      <h3 id="examQuestionText" style="font-size:20px;line-height:1.5;margin-top:20px"></h3>
+      <div id="examQuestionSource" class="notice"></div>
+      <div id="examAnswerArea" style="margin-top:14px"></div>
+      <div class="fc-actions" style="margin-top:14px"><button class="btn outline" onclick="moveAIExam(-1)">← Anterior</button><button class="btn outline" id="examFlagBtn" onclick="toggleAIExamFlag()">☆ Marcar para revisar</button><button class="btn" onclick="moveAIExam(1)">Próxima →</button></div>
+      <div id="examPracticeFeedback" aria-live="polite" style="margin-top:12px"></div>
+      <details style="margin-top:12px"><summary style="cursor:pointer;font-weight:700">Visão geral das questões</summary><div id="examQuestionPalette" class="fc-actions" style="margin-top:10px"></div></details>
+      <div class="fc-actions" style="margin-top:16px"><button class="btn" id="examSubmitBtn" onclick="submitAIExam()">Entregar simulado</button><button class="btn outline" onclick="cancelAIExam()">Sair do simulado</button></div>
+      <p class="notice">Suas respostas ficam nesta sessão até entregar ou sair. O modo simulado não revela respostas corretas antes da entrega.</p>
+    </div>
+    <div class="card" id="aiExamResults" hidden style="margin-bottom:16px" aria-live="polite"></div>
+    <div class="card" id="aiExamHistoryCard" style="margin-bottom:16px"><div class="section-head" style="margin-top:0"><h2>Histórico de simulados</h2><button class="btn outline" onclick="clearAIExamHistory()">Apagar histórico</button></div><p class="notice">O histórico é salvo somente neste navegador e não é sincronizado na nuvem.</p><div id="aiExamHistory"><p>Nenhum simulado concluído neste navegador.</p></div></div>
+    <div class="section-head"><h2>Exercícios rápidos</h2></div><p class="subtitle">Os exercícios predefinidos continuam disponíveis para uma revisão rápida.</p>
+    <div class="card"><div class="smallrow"><span id="quizCount">Pergunta 1 de 8</span><span id="scoreLabel">Pontuação: 0</span></div><h3 id="question" style="font-size:19px;line-height:1.5;margin-top:20px">Como se diz “mãe” em espanhol?</h3><div class="options" id="options"></div><div id="feedback"></div><button class="btn" id="nextQuestion" onclick="nextQuestion()" style="display:none">Próxima pergunta →</button><button class="btn outline" id="restartQuiz" onclick="restartQuiz()" style="display:none">Tentar novamente</button></div>
+  </section>
+  <section class="page" id="plano">
+    <h1>Plano de estudos</h1><p class="subtitle">Monte uma rotina simples de revisão de espanhol para chegar mais preparado à prova.</p>
+    <div class="card"><h3>Personalize seu plano</h3><label for="days">Quantos dias você tem para estudar?</label><input class="field" id="days" type="text" inputmode="numeric" pattern="[0-9]*" autocomplete="off" aria-describedby="daysHelp" placeholder="Digite a quantidade de dias" onbeforeinput="if(event.data && /[^0-9]/.test(event.data) && event.inputType!=='insertFromPaste') event.preventDefault()" oninput="this.value=this.value.replace(/[^0-9]/g,'')" onpaste="setTimeout(()=>{this.value=this.value.replace(/[^0-9]/g,'')},0)" required><small id="daysHelp" class="notice" style="display:block;margin:7px 0 14px">Digite apenas números inteiros de 1 a 365.</small><label for="minutes">Quanto tempo por dia?</label><select class="field" id="minutes"><option value="15">15 minutos</option><option value="20" selected>20 minutos</option><option value="30">30 minutos</option><option value="45">45 minutos</option></select><br><br><button class="btn" onclick="makePlan()">Criar meu plano</button></div>
+    <div class="section-head"><h2>Seu cronograma</h2></div><div class="card" id="planResult"><p>Escolha quantos dias você tem e clique em “Criar meu plano”.</p></div>
+  </section>
+</main>
+</div>
+<script>
+const topics={
+ casa:{title:'La casa — partes e objetos',icon:'🏠',intro:'Use estas palavras para falar dos cômodos e objetos da casa.',body:`<b>Partes da casa</b><ul><li><b>la casa</b> — a casa</li><li><b>la cocina</b> — a cozinha</li><li><b>el baño</b> — o banheiro</li><li><b>el dormitorio / la habitación</b> — o quarto</li><li><b>el salón</b> — a sala</li><li><b>el comedor</b> — a sala de jantar</li><li><b>el jardín</b> — o jardim</li></ul><b>Objetos</b><ul><li><b>la cama</b> — a cama</li><li><b>la mesa</b> — a mesa</li><li><b>la silla</b> — a cadeira</li><li><b>la ventana</b> — a janela</li><li><b>la puerta</b> — a porta</li></ul><b>Exemplo:</b> Mi dormitorio tiene una cama y una mesa. (Meu quarto tem uma cama e uma mesa.)`},
+ posesivos:{title:'Los posesivos — possessivos',icon:'🔑',intro:'Os possessivos mostram a quem uma coisa pertence.',body:`<ul><li><b>mi / mis</b> — meu/minha; meus/minhas</li><li><b>tu / tus</b> — teu/tua; teus/tuas</li><li><b>su / sus</b> — seu/sua; seus/suas</li><li><b>nuestro / nuestra / nuestros / nuestras</b> — nosso/nossa/nossos/nossas</li><li><b>vuestro / vuestra / vuestros / vuestras</b> — vosso/vossa/vossos/vossas (usado principalmente na Espanha)</li></ul><p>O possessivo combina com a coisa possuída. Ex.: <b>mi hermano</b> (meu irmão), <b>mis hermanas</b> (minhas irmãs), <b>nuestra casa</b> (nossa casa).</p><b>Dica:</b> “mi” não tem acento quando significa “meu/minha”. “Mí”, com acento, aparece depois de algumas preposições, como “para mí”.`},
+ familia:{title:'La familia — família',icon:'👨‍👩‍👧‍👦',intro:'Aprenda os nomes dos familiares mais comuns.',body:`<ul><li><b>la madre / mamá</b> — mãe</li><li><b>el padre / papá</b> — pai</li><li><b>el hermano / la hermana</b> — irmão/irmã</li><li><b>el abuelo / la abuela</b> — avô/avó</li><li><b>el tío / la tía</b> — tio/tia</li><li><b>el primo / la prima</b> — primo/prima</li><li><b>el hijo / la hija</b> — filho/filha</li><li><b>los padres</b> — os pais</li></ul><b>Exemplo:</b> Mi familia es pequeña. Tengo una hermana. (Minha família é pequena. Tenho uma irmã.)`},
+ fisica:{title:'Descripción física — descrição física',icon:'🙂',intro:'Use adjetivos para descrever a aparência de uma pessoa.',body:`<ul><li><b>alto/a</b> — alto/a</li><li><b>bajo/a</b> — baixo/a</li><li><b>delgado/a</b> — magro/a</li><li><b>fuerte</b> — forte</li><li><b>joven</b> — jovem</li><li><b>mayor</b> — mais velho/a</li><li><b>rubio/a</b> — loiro/a</li><li><b>moreno/a</b> — moreno/a</li><li><b>pelo corto/largo</b> — cabelo curto/comprido</li><li><b>ojos azules/marrones/verdes</b> — olhos azuis/castanhos/verdes</li></ul><b>Exemplos:</b><p>Mi hermano es alto. (Meu irmão é alto.)<br>Ella tiene el pelo largo. (Ela tem cabelo comprido.)</p><b>Atenção:</b> muitos adjetivos mudam a terminação: alto/alta, rubio/rubia. “Fuerte” pode ser usado para masculino e feminino.`},
+ verbos:{title:'Ser, tener y llevar',icon:'🔤',intro:'Três verbos muito usados para apresentar e descrever pessoas.',body:`<b>SER — ser</b><ul><li>yo soy — eu sou</li><li>tú eres — tu és/você é</li><li>él/ella es — ele/ela é</li><li>nosotros somos — nós somos</li><li>ellos son — eles são</li></ul><b>TENER — ter</b><ul><li>yo tengo — eu tenho</li><li>tú tienes — tu tens/você tem</li><li>él/ella tiene — ele/ela tem</li><li>nosotros tenemos — nós temos</li><li>ellos tienen — eles têm</li></ul><b>LLEVAR — usar/vestir ou levar</b><p>Ex.: Lleva una camiseta azul. (Ele/ela está usando uma camiseta azul.)</p><b>Compare:</b> Es alto (é alto); tiene el pelo corto (tem cabelo curto); lleva gafas (usa óculos).`}
+};
+function go(id){if(id==='flashcards'&&document.getElementById('flashcard').style.display==='none')restartAllFlashcards();document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===id));window.scrollTo({top:0,behavior:'smooth'})}
+document.querySelectorAll('.nav button').forEach(b=>b.addEventListener('click',()=>go(b.dataset.page)));
+let completed=new Set();
+function openTopic(key){const t=topics[key];completed.add(key);document.getElementById('topicContent').innerHTML=`<div class="topic-icon">${t.icon}</div><span class="pill">Resumo de estudo</span><h3 style="font-size:21px;margin-top:12px">${t.title}</h3><p>${t.intro}</p><div style="font-size:14px;line-height:1.8">${t.body}</div><br><button class="btn" onclick="go('flashcards')">Praticar com flashcards →</button>`;updateProgress();go('conteudos')}
+function updateProgress(){let n=completed.size;document.getElementById('progressText').textContent=n+' de 5 tópicos concluídos';document.getElementById('progressPct').textContent=Math.round(n/5*100)+'%';document.getElementById('progressBar').style.width=(n/5*100)+'%';document.getElementById('progressLabel').textContent=n===5?'Muito bem!':n?'Em andamento':'Começando'}
+const knowledge=[
+{keys:['possessiv','meu','minha','teu','tua','nosso','nossa','su','mi','tu'],answer:'Os possessivos mostram de quem é alguma coisa:\n• mi/mis = meu/minha/meus/minhas: mi casa, mis libros\n• tu/tus = teu/tua/teus/tuas: tu hermano, tus amigas\n• su/sus = seu/sua/seus/suas: su mochila, sus padres\n• nuestro/nuestra/nuestros/nuestras = nosso/nossa/nossos/nossas: nuestra casa, nuestros libros\nA palavra combina com o objeto possuído, não com quem é o dono.'},
+{keys:['ser','tener','llevar','diferença','diferenca'],answer:'A diferença é esta:\n• SER = ser/estar como característica: Ella es alta. (Ela é alta.)\n• TENER = ter: Tiene el pelo largo. (Tem cabelo comprido.)\n• LLEVAR = usar/vestir: Lleva gafas. (Usa óculos.)\nDica: aparência geral → ser; cabelo/olhos → tener; roupa e acessórios → llevar.'},
+{keys:['descrev','pessoa','físic','fisic','aparência','aparencia','cabelo','olhos','alto','baixa'],answer:'Para descrever alguém, você pode usar:\n• Es alto/alta. = É alto/alta.\n• Tiene el pelo corto/largo. = Tem cabelo curto/comprido.\n• Tiene los ojos azules/marrones. = Tem olhos azuis/castanhos.\n• Lleva gafas. = Usa óculos.\nAtenção: alguns adjetivos mudam conforme a pessoa: alto/alta, rubio/rubia, delgado/delgada.'},
+{keys:['família','familia','madre','padre','irmão','irmao','avó','avo','tio','primo'],answer:'Vocabulário da família:\n• madre / mamá = mãe\n• padre / papá = pai\n• hermano / hermana = irmão / irmã\n• abuelo / abuela = avô / avó\n• tío / tía = tio / tia\n• primo / prima = primo / prima\n• hijo / hija = filho / filha\nExemplo: Mi familia es grande. = Minha família é grande.'},
+{keys:['casa','cocina','quarto','objetos','banheiro','cozinha','sala','janela','porta','mesa','cama'],answer:'Vocabulário da casa:\n• la casa = a casa\n• la cocina = a cozinha\n• el baño = o banheiro\n• el dormitorio / la habitación = o quarto\n• el salón = a sala\n• el jardín = o jardim\n• la cama = a cama\n• la mesa = a mesa\n• la silla = a cadeira\n• la ventana = a janela\n• la puerta = a porta\nExemplo: Mi casa tiene un jardín. = Minha casa tem um jardim.'},
+{keys:['hola','olá','ola','oi','saudação','saudacao','como está','como estas'],answer:'¡Hola! significa “Olá!” ou “Oi!”.\n• ¿Cómo estás? = Como você está?\n• Estoy bien, gracias. = Estou bem, obrigado/a.\n• Buenos días = Bom dia.\n• Buenas tardes = Boa tarde.\n• Buenas noches = Boa noite.'},
+{keys:['tradu','significa','em espanhol','como se diz','como falar','traduz'],answer:null},
+{keys:['prova','estudar','resumo','revisão','revisao','ajuda'],answer:'Claro! Os conteúdos que posso explicar neste StudyAI são: partes e objetos da casa, possessivos (mi, tu, su, nuestro), vocabulário da família, descrição física e os verbos ser, tener e llevar. Escreva sua pergunta completa ou diga qual desses temas quer revisar.'}
+];
+function buildAnswer(q){
+ const norm=q.toLocaleLowerCase('pt-BR').normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+ const cleaned=norm.replace(/[¿?¡!.,;:()]/g,' ');
+ const found=knowledge.find(k=>k.keys.some(key=>cleaned.includes(key.normalize('NFD').replace(/[\u0300-\u036f]/g,''))));
+ if(found && found.answer) return found.answer;
+ if(found && found.answer===null){
+   const dict=[
+    [/madre|mama/,'madre / mamá = mãe.'],
+    [/padre|papa/,'padre / papá = pai.'],
+    [/hermano/,'hermano = irmão; hermana = irmã.'],
+    [/abuelo/,'abuelo = avô; abuela = avó.'],
+    [/cocina/,'la cocina = a cozinha.'],
+    [/bano/,'el baño = o banheiro.'],
+    [/dormitorio|habitacion/,'el dormitorio / la habitación = o quarto.'],
+    [/ventana/,'la ventana = a janela.'],
+    [/puerta/,'la puerta = a porta.'],
+    [/cama/,'la cama = a cama.'],
+    [/mesa/,'la mesa = a mesa.'],
+    [/silla/,'la silla = a cadeira.'],
+    [/jardin/,'el jardín = o jardim.'],
+    [/mi casa/,'mi casa = minha casa.'],
+    [/nuestro/,'nuestro/nuestra = nosso/nossa; nuestros/nuestras = nossos/nossas.'],
+    [/alto|alta/,'alto = alto; alta = alta. Exemplo: Ella es alta. = Ela é alta.'],
+    [/rubio|rubia/,'rubio = loiro; rubia = loira.'],
+    [/gafas/,'gafas = óculos. “Lleva gafas” = usa óculos.']
+   ];
+   const d=dict.find(([re])=>re.test(cleaned));
+   if(d)return d[1];
+ }
+ if(/^(oi|ola|hola|bom dia|boa tarde|boa noite)[ !.]*$/.test(cleaned)) return '¡Hola! 😊 Pode me perguntar sobre os conteúdos de espanhol: la casa, los posesivos, la familia, descripción física ou os verbos ser, tener e llevar.';
+ if(/exemplo/.test(cleaned)) return 'Aqui vai um exemplo: “Mi hermano es alto y tiene el pelo corto.” Significa “Meu irmão é alto e tem cabelo curto”. “Es” vem do verbo ser e “tiene” vem do verbo tener.';
+ if(/frase|sentenca/.test(cleaned)) return 'Aqui estão três frases para praticar:\n1. Mi casa tiene una cocina grande. = Minha casa tem uma cozinha grande.\n2. Mi madre es alta. = Minha mãe é alta.\n3. Mi hermano lleva gafas. = Meu irmão usa óculos.';
+ if(/quiz|pergunta|exercicio|exercício|praticar/.test(cleaned)) return 'Vamos praticar! Como se diz “o quarto” em espanhol?\nA) el baño\nB) el dormitorio\nC) la cocina\n\nResponda A, B ou C e eu ajudo você a conferir.';
+ return 'Quero te ajudar sem inventar uma resposta. Neste momento, meu chat consegue explicar principalmente os conteúdos da página: vocabulário da casa, possessivos, família, descrição física e ser/tener/llevar. Tente reformular sua dúvida com o tema ou mande a frase em espanhol que você quer entender.';
+}
+const chatHistory=[];
+async function sendChat(){
+ const input=document.getElementById('chatInput'),button=document.querySelector('.chatrow button'),q=input.value.trim();
+ if(!q||button.disabled)return;
+ addMsg(q,'user');chatHistory.push({role:'user',content:q});input.value='';button.disabled=true;button.textContent='Pensando…';
+ const pending=addMsg('Estoy pensando…','ai');pending.dataset.pending='true';
+ try{
+  const response=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:chatHistory.slice(-12),activeContent:(window.StudyAIContent&&window.StudyAIContent.getActive?window.StudyAIContent.getActive():null)})});
+  const data=await response.json();
+  if(!response.ok)throw new Error(data.error||'Não consegui falar com a IA agora.');
+  pending.textContent=data.reply||'Não recebi uma resposta. Tente novamente.';
+  chatHistory.push({role:'assistant',content:pending.textContent});
+ }catch(err){pending.textContent='Não consegui conectar à IA. Confira se o servidor está rodando e se a chave de API foi configurada. Detalhe: '+err.message;}
+ finally{delete pending.dataset.pending;button.disabled=false;button.textContent='Enviar ↑';input.focus();}
+}
+function addMsg(text,who){let d=document.createElement('div');d.className='msg '+who;d.textContent=text;let box=document.getElementById('messages');box.appendChild(d);box.scrollTop=box.scrollHeight;return d}
+function ask(q){go('chat');document.getElementById('chatInput').value=q;sendChat()}
+let cards=[
+ ['la cocina','a cozinha','Nome em espanhol do cômodo onde preparamos as refeições.'],
+ ['el baño','o banheiro','Cômodo usado para higiene pessoal.'],
+ ['el dormitorio','o quarto','Cômodo onde dormimos; também pode ser chamado de “la habitación”.'],
+ ['la cama','a cama','Móvel usado para dormir ou descansar.'],
+ ['la ventana','a janela','Abertura que permite a entrada de luz e ar.'],
+ ['la madre','a mãe','Palavra em espanhol para se referir à mãe.'],
+ ['el padre','o pai','Palavra em espanhol para se referir ao pai.'],
+ ['el hermano','o irmão','Usamos “hermana” para irmã.'],
+ ['mi casa','minha casa','“Mi” é um possessivo que indica algo que pertence a mim.'],
+ ['nuestro libro','nosso livro','“Nuestro” acompanha um substantivo masculino singular.'],
+ ['alto / alta','alto / alta','Adjetivos usados para descrever a altura de uma pessoa.'],
+ ['lleva gafas','usa óculos','“Llevar” pode ser usado para falar de algo que a pessoa veste ou usa.']
+];
+try{const savedFlashcards=JSON.parse(localStorage.getItem('studyaiSpanishFlashcards')||'null');if(Array.isArray(savedFlashcards)&&savedFlashcards.length){cards=savedFlashcards.filter(c=>Array.isArray(c)&&c.length>=2&&c[0]&&c[1]);}}catch(e){}
+function persistFlashcards(){try{localStorage.setItem('studyaiSpanishFlashcards',JSON.stringify(cards));}catch(e){}}
+let cardIndex=0,flipped=false;
+let sessionDeck=cards.slice();
+let sessionResults=new Map();
+let sessionMode='all';
+const flashcardContentLabels={todos:'Todos os conteúdos',casa:'La casa',posesivos:'Los posesivos',familia:'La familia',fisica:'Descripción física',verbos:'Ser, tener y llevar',personalizados:'Meus flashcards'};
+function flashcardCategory(c){
+ const d=cardDetails(c);if(d.topic&&flashcardContentLabels[d.topic])return d.topic;
+ const front=String(c&&c[0]||'').toLocaleLowerCase('es');const text=(front+' '+String(c&&c[1]||'')).toLocaleLowerCase('es');
+ if(/^(mi |mis |tu |tus |su |sus |nuestro|nuestra|nuestros|nuestras)/.test(front)||/posesiv|nuestro|nuestra|nuestros|nuestras|mi libro|mis libros|tu casa|su casa/.test(text))return 'posesivos';
+ if(/cocin|baño|dormitorio|cama|ventana|habitación|habitacion/.test(text))return 'casa';
+ if(/madre|padre|hermano|hermana|familia|abuela|abuelo/.test(text))return 'familia';
+ if(/ser, tener|tener|llevar|lleva|soy|eres|es alto/.test(text))return 'verbos';
+ if(/alto|alta|bajo|baja|gafas|pelo|ojos|descripci/.test(text))return 'fisica';
+ return 'personalizados';
+}
+function cardsForSelectedContent(){const selected=document.getElementById('fcContentSelect')?.value||'todos';return selected==='todos'?cards.slice():cards.filter(c=>flashcardCategory(c)===selected)}
+function updateFlashcardSetup(){const available=cardsForSelectedContent().length;const amount=document.getElementById('fcAmount');amount.max=String(Math.max(1,available));if(!available){amount.value='1';amount.disabled=true;document.getElementById('fcSetupStatus').textContent='Ainda não há flashcards neste conteúdo. Adicione cartões ou escolha outro tema.';}else{amount.disabled=false;const current=parseInt(amount.value,10);if(!Number.isInteger(current)||current<1)amount.value=String(Math.min(12,available));else if(current>available)amount.value=String(available);document.getElementById('fcSetupStatus').textContent=`Este conteúdo tem ${available} flashcard(s) disponível(is).`; }document.getElementById('fcAmountHelp').textContent=available?`Escolha de 1 até ${available} cartão(ões).`:'Nenhum cartão disponível neste conteúdo.'}
+function validateFlashcardAmount(){const input=document.getElementById('fcAmount');const max=cardsForSelectedContent().length;let n=parseInt(input.value,10);if(Number.isInteger(n)){if(n<1)n=1;if(max&&n>max)n=max;input.value=String(n)}}
+function startSelectedFlashcards(){const available=cardsForSelectedContent();if(!available.length){document.getElementById('fcSetupStatus').textContent='Não há cartões neste conteúdo. Escolha outro tema ou adicione flashcards.';return}const amountInput=document.getElementById('fcAmount');let amount=parseInt(amountInput.value,10);if(!Number.isInteger(amount)||amount<1)amount=1;amount=Math.min(amount,available.length);sessionDeck=available.slice(0,amount);sessionResults=new Map();sessionMode='selected';cardIndex=0;flipped=false;restoreFlashcardView();renderCard();document.getElementById('fcTopicLabel').textContent=flashcardContentLabels[document.getElementById('fcContentSelect').value]||'Todos os conteúdos';document.getElementById('fcSetupStatus').textContent=`Sessão iniciada com ${sessionDeck.length} flashcard(s). Você pode mudar a seleção e começar outra sessão quando quiser.`}
+function renderCard(){
+ const c=sessionDeck[cardIndex];
+ if(!c){finishFlashcardSession();return}
+ document.getElementById('fcCount').textContent=`Cartão ${cardIndex+1} de ${sessionDeck.length}`;
+ document.getElementById('fcTopicLabel').textContent=flashcardContentLabels[document.getElementById('fcContentSelect')?.value||'todos']||'Todos os conteúdos';
+ document.getElementById('fcFront').textContent=c[0];
+ document.getElementById('fcBack').textContent=c[1];
+ document.getElementById('fcExplanation').innerHTML=renderCardExplanation(c);
+ document.getElementById('fcHint').textContent='Pense na resposta e toque no cartão';
+ document.getElementById('flashcard').classList.toggle('flipped',flipped);
+ document.getElementById('showAnswerBtn').textContent=flipped?'Mostrar pergunta':'Mostrar resposta';
+ document.getElementById('flashcard').setAttribute('aria-label',flipped?'Resposta exibida. Toque para voltar à pergunta':'Pergunta do flashcard. Toque para mostrar a resposta');
+ document.getElementById('fcRatingActions').hidden=!flipped || sessionResults.has(c);
+ document.getElementById('fcRatingHint').style.display=flipped && !sessionResults.has(c)?'block':'none';
+ document.getElementById('nextCardBtn').textContent=cardIndex===sessionDeck.length-1?'Ir para o resumo →':'Próximo →';
+ document.getElementById('fcSessionSummary').hidden=true;
+}
+function flipCard(){flipped=!flipped;renderCard()}
+function nextCard(){if(cardIndex<sessionDeck.length-1){cardIndex++;flipped=false;renderCard()}else if(sessionDeck.every(c=>sessionResults.has(c))){finishFlashcardSession()}else{const next=sessionDeck.findIndex(c=>!sessionResults.has(c));if(next>=0){cardIndex=next;flipped=false;renderCard()}else finishFlashcardSession()}}
+function prevCard(){cardIndex=(cardIndex-1+sessionDeck.length)%sessionDeck.length;flipped=false;renderCard()}
+function rateCard(result){const c=sessionDeck[cardIndex];if(!c)return;sessionResults.set(c,result);const next=sessionDeck.findIndex(item=>!sessionResults.has(item));if(next>=0){cardIndex=next;flipped=false;renderCard()}else finishFlashcardSession()}
+function finishFlashcardSession(){
+ const summary=document.getElementById('fcSessionSummary');
+ const correct=sessionDeck.filter(c=>sessionResults.get(c)==='known'||sessionResults.get(c)==='correct').length;
+ const wrong=sessionDeck.filter(c=>sessionResults.get(c)==='almost'||sessionResults.get(c)==='wrong').length;
+ const unknown=sessionDeck.filter(c=>sessionResults.get(c)==='unknown').length;
+ const answered=correct+wrong+unknown;
+ const pct=answered?Math.round(correct/answered*100):0;
+ const missed=sessionDeck.filter(c=>sessionResults.get(c)==='wrong'||sessionResults.get(c)==='unknown'||sessionResults.get(c)==='almost');
+ document.getElementById('fcCount').textContent='Sessão concluída';
+ document.getElementById('flashcard').style.display='none';
+ document.querySelector('.fc-start-note').style.display='none';
+ document.querySelector('.fc-actions').style.display='none';
+ document.getElementById('fcRatingActions').hidden=true;
+ document.getElementById('fcRatingHint').style.display='none';
+ summary.hidden=false;
+ const stats=`<div class="fc-summary-stats"><div class="fc-stat"><strong>${correct}</strong><span>Acertos</span></div><div class="fc-stat"><strong>${wrong}</strong><span>Erros</span></div><div class="fc-stat"><strong>${unknown}</strong><span>Não sabia</span></div></div>`;
+ let review='';
+ if(missed.length){review='<h3>Resumo para revisão</h3><p class="notice">Revise estes cartões antes de tentar novamente.</p>'+missed.map(c=>`<div class="fc-review-item"><strong>${escapeHtml(c[0])} → ${escapeHtml(c[1])}</strong><p>${escapeHtml(c[2]||`“${c[0]}” significa “${c[1]}”.`)}</p><span class="pill">${sessionResults.get(c)==='almost'?'Marcou “Quase”':sessionResults.get(c)==='wrong'?'Marcou “Errei”':'Marcou “Não sabia”'}</span></div>`).join('');}
+ else review='<h3>Mandou bem! 🎉</h3><p>Você marcou todos os cartões como acertos nesta sessão.</p>';
+ summary.innerHTML=`<h2>Resultado da sessão</h2><p>Você acertou <strong>${correct} de ${answered}</strong> cartões (${pct}%).</p>${stats}${review}<div class="fc-actions" style="margin-top:18px"><button class="btn" onclick="redoMissedCards()" ${missed.length?'':'disabled'}>Reiniciar apenas os cartões que errei</button><button class="btn outline" onclick="goToFlashcardMenu()">Voltar ao menu principal</button><button class="btn outline" onclick="restartAllFlashcards()">Refazer todos os cartões</button></div>`;
+}
+function escapeHtml(value){return String(value).replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]))}
+function restoreFlashcardView(){document.getElementById('flashcard').style.display='';document.querySelector('.fc-start-note').style.display='';document.querySelector('.fc-actions').style.display='flex';document.getElementById('fcSessionSummary').hidden=true}
+function restartAllFlashcards(){sessionDeck=cards.slice();sessionResults=new Map();sessionMode='all';cardIndex=0;flipped=false;restoreFlashcardView();renderCard()}
+function redoMissedCards(){const missed=sessionDeck.filter(c=>sessionResults.get(c)==='wrong'||sessionResults.get(c)==='unknown'||sessionResults.get(c)==='almost');if(!missed.length)return;sessionDeck=missed;sessionResults=new Map();sessionMode='missed';cardIndex=0;flipped=false;restoreFlashcardView();renderCard()}
+function goToFlashcardMenu(){go('inicio');restartAllFlashcards()}
+function cardDetails(c){return c&&c[3]&&typeof c[3]==='object'?c[3]:{meaning:c?.[1]||'',usage:c?.[2]||`Use “${c?.[0]||''}” no contexto adequado.`,exampleEs:'',examplePt:'',note:''}}
+function renderCardExplanation(c){const d=cardDetails(c);const sections=[['Resposta / tradução principal',d.meaning||c[1]],['Como / quando usar',d.usage],['Exemplo de aplicação',d.exampleEs?`${d.exampleEs}${d.examplePt?' — '+d.examplePt:''}`:'Adicione uma frase completa em espanhol e sua tradução ao editar este cartão.'],['Notas de uso / pegadinhas',d.note||'Confira o contexto da frase e a concordância antes de usar.']];return sections.map(([label,value])=>`<div class="fc-section"><b>${escapeHtml(label)}</b><p>${escapeHtml(value)}</p></div>`).join('')}
+function addCard(){const f=document.getElementById('newFront').value.trim(),b=document.getElementById('newBack').value.trim();const details={meaning:b,usage:document.getElementById('newUsage').value.trim(),exampleEs:document.getElementById('newExampleEs').value.trim(),examplePt:document.getElementById('newExamplePt').value.trim(),note:document.getElementById('newNote').value.trim(),topic:'personalizados'};if(!f||!b){alert('Preencha o termo/pergunta e a resposta principal.');return}if(!details.usage||!details.exampleEs||!details.examplePt){alert('Preencha também “Como/quando usar”, o exemplo em espanhol e a tradução do exemplo.');return}const newCard=[f,b,details.usage,details];cards.push(newCard);persistFlashcards();['newFront','newBack','newUsage','newExampleEs','newExamplePt','newNote'].forEach(id=>document.getElementById(id).value='');if(sessionMode==='all')sessionDeck=cards.slice();cardIndex=sessionDeck.indexOf(newCard);if(cardIndex<0)cardIndex=0;flipped=false;restoreFlashcardView();renderCard();renderFlashcardEditorSelect(newCard);alert('Flashcard adicionado!')}
+const questions=[
+{q:'Como se diz “mãe” em espanhol?',o:['Madre','Hermana','Abuela','Tía'],a:0,e:'“Madre” ou “mamá” significa mãe.'},
+{q:'Qual é a tradução de “la cocina”?',o:['O quarto','A cozinha','A sala','O banheiro'],a:1,e:'“La cocina” significa a cozinha.'},
+{q:'Complete: ___ casa (minha casa).',o:['Tu','Su','Mi','Nuestro'],a:2,e:'“Mi” significa meu/minha: mi casa.'},
+{q:'Qual verbo usamos em “Ella ___ alta” (Ela é alta)?',o:['tiene','lleva','soy','es'],a:3,e:'“Es” é a forma do verbo ser para él/ella/usted.'},
+{q:'O que significa “el hermano”?',o:['O pai','O irmão','O avô','O tio'],a:1,e:'“El hermano” significa o irmão.'},
+{q:'Como dizer “Ela tem cabelo comprido”?',o:['Ella es el pelo largo.','Ella lleva alta.','Ella tiene el pelo largo.','Ella soy pelo largo.'],a:2,e:'Usamos tener: “Ella tiene el pelo largo”.'},
+{q:'Qual possessivo significa “nosso” antes de “libro”?',o:['Mi','Su','Tu','Nuestro'],a:3,e:'“Nuestro libro” significa nosso livro.'},
+{q:'“Lleva gafas” significa:',o:['Usa óculos','Tem cabelo curto','É alto','Tem uma casa'],a:0,e:'“Llevar” pode indicar algo que a pessoa usa ou veste.'}
+];let qi=0,score=0,answered=false;
+function renderQuestion(){let q=questions[qi];document.getElementById('quizCount').textContent=`Pergunta ${qi+1} de ${questions.length}`;document.getElementById('scoreLabel').textContent='Pontuação: '+score;document.getElementById('question').textContent=q.q;document.getElementById('feedback').innerHTML='';document.getElementById('nextQuestion').style.display='none';document.getElementById('restartQuiz').style.display='none';answered=false;document.getElementById('options').innerHTML='';q.o.forEach((o,i)=>{let b=document.createElement('button');b.className='option';b.textContent=String.fromCharCode(65+i)+'. '+o;b.onclick=()=>chooseAnswer(i);document.getElementById('options').appendChild(b)})}
+function chooseAnswer(i){if(answered)return;answered=true;let q=questions[qi],correct=i===q.a;if(correct)score++;document.querySelectorAll('.option').forEach((b,j)=>{b.disabled=true;if(j===q.a)b.style.borderColor='#16845d';if(j===i&&!correct)b.style.borderColor='#d64c3d'});document.getElementById('feedback').innerHTML=`<div class="feedback ${correct?'good':'bad'}"><b>${correct?'¡Muy bien! Resposta correta!':'Quase! Vamos aprender.'}</b><br>${q.e}</div>`;document.getElementById('scoreLabel').textContent='Pontuação: '+score;let next=document.getElementById('nextQuestion');if(qi===questions.length-1){next.style.display='none';document.getElementById('restartQuiz').style.display='inline-block';document.getElementById('feedback').innerHTML+=`<p><b>Você acertou ${score} de ${questions.length} perguntas.</b> ${score>=6?'¡Excelente! Continue revisando.':'Revise os resumos e tente novamente!'}</p>`}else next.style.display='inline-block'}
+function nextQuestion(){qi++;renderQuestion()}function restartQuiz(){qi=0;score=0;renderQuestion()}renderQuestion();
+function makePlan(){const daysField=document.getElementById('days');const rawDays=daysField.value;const days=Number(rawDays);const mins=Number(document.getElementById('minutes').value);const result=document.getElementById('planResult');if(!/^[0-9]+$/.test(rawDays)||!Number.isSafeInteger(days)||days<1||days>365){result.innerHTML='<p role="alert" style="color:#b42318;font-weight:700">Digite um número inteiro entre 1 e 365 dias para criar seu plano.</p>';daysField.focus();return}let subjects=[['La casa','Memorize 8 palavras e escreva 3 frases sobre sua casa.'],['Los posesivos','Revise mi, tu, su e nuestro. Faça 5 exemplos.'],['La familia','Estude o vocabulário e descreva sua família.'],['Descripción física','Pratique adjetivos e frases com ser e tener.'],['Ser, tener y llevar','Compare os três verbos e faça exemplos.'],['Flashcards','Revise todas as palavras e traduções.'],['Simulado final','Faça o quiz e revise os erros.']];let tasks=[];if(days===3)tasks=[['Dia 1',subjects[0][0]+' + '+subjects[1][0],subjects[0][1]+' '+subjects[1][1]],['Dia 2',subjects[2][0]+' + '+subjects[3][0],subjects[2][1]+' '+subjects[3][1]],['Dia 3',subjects[4][0]+' + revisão',subjects[4][1]+' Faça flashcards e o simulado.']];else{for(let i=0;i<days;i++){let s=subjects[i%subjects.length];tasks.push([`Dia ${i+1}`,s[0],s[1]])}}result.innerHTML=`<span class="pill">${days} dias • ${mins} min/dia</span><div style="margin-top:12px">${tasks.map((t,i)=>`<div class="list-item"><div class="dot">${i+1}</div><div><b>${t[0]} — ${t[1]}</b><small>${t[2]}<br>⏱️ Sugestão: ${mins} minutos</small></div></div>`).join('')}</div><p class="notice">Dica: faça pequenas pausas e tente lembrar das respostas sem olhar o resumo.</p>`}
+
+// Editor de conteúdos de espanhol: permite editar, criar e excluir temas localmente.
+const originalTopicKeys = Object.keys(topics);
+function plainTextFromHtml(html){const d=document.createElement('div');d.innerHTML=html;return (d.innerText||d.textContent||'').replace(/\n{3,}/g,'\n\n').trim()}
+function escapeEditorText(text){return String(text).replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]))}
+function normalizeTopicTitle(value){return String(value||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLocaleLowerCase('pt-BR').replace(/[^a-z0-9]+/g,' ').trim()}
+function deduplicateTopics(){const seen=new Set();Object.keys(topics).forEach(key=>{const title=normalizeTopicTitle(topics[key]&&topics[key].title);if(!title||seen.has(title)){delete topics[key];return}seen.add(title)});try{localStorage.setItem('studyaiSpanishTopics',JSON.stringify(topics))}catch(e){}}
+function topicFields(t){if(t.editorFields)return t.editorFields;const legacy=t.editorText!==undefined?t.editorText:plainTextFromHtml(t.body||'');return {definition:'',example:'',usage:'',extra:legacy}}
+function renderEditorSelect(selected){deduplicateTopics();const sel=document.getElementById('editorTopic');sel.innerHTML='';Object.keys(topics).forEach(key=>{const op=document.createElement('option');op.value=key;op.textContent=topics[key].title;sel.appendChild(op)});if(selected&&topics[selected])sel.value=selected;else if(sel.options.length)sel.selectedIndex=0;}
+function openContentEditor(){const modal=document.getElementById('contentEditor');modal.classList.add('open');modal.style.display='';document.body.style.overflow='hidden';document.getElementById('activeStudyName').value='';document.getElementById('activeStudyText').value='';const count=document.getElementById('activeStudyCharCount');if(count)count.textContent='0 caracteres';if(typeof window.renderActiveStudyContent==='function')window.renderActiveStudyContent();const st=document.getElementById('activeStudyStatus');if(st)st.textContent='';setTimeout(()=>{const t=document.getElementById('activeStudyText');if(t)t.focus()},50)}
+function loadActiveContentIntoEditor(){const item=window.getActiveStudyContent?window.getActiveStudyContent():null;if(!item)return;document.getElementById('activeStudyText').value=item.text||'';const count=document.getElementById('activeStudyCharCount');if(count)count.textContent=(item.text||'').length.toLocaleString('pt-BR')+' caracteres'}
+function closeContentEditor(){document.getElementById('contentEditor').classList.remove('open');document.body.style.overflow=''}
+function loadEditorTopic(){const key=document.getElementById('editorTopic').value;const t=topics[key];if(!t)return;const f=topicFields(t);document.getElementById('editorIcon').value=t.icon||'📚';document.getElementById('editorName').value=t.title||'';document.getElementById('editorIntro').value=t.intro||'';document.getElementById('editorDefinition').value=f.definition||'';document.getElementById('editorExample').value=f.example||'';document.getElementById('editorUsage').value=f.usage||'';document.getElementById('editorExtra').value=f.extra||'';document.getElementById('deleteEditorBtn').disabled=originalTopicKeys.includes(key);document.getElementById('editorStatus').textContent=originalTopicKeys.includes(key)?'Você está editando um tema existente.':'Tema novo: você pode editar ou excluir.'}
+function saveEditorTopic(){let key=document.getElementById('editorTopic').value;let name=document.getElementById('editorName').value.trim();let intro=document.getElementById('editorIntro').value.trim();let definition=document.getElementById('editorDefinition').value.trim();let example=document.getElementById('editorExample').value.trim();let usage=document.getElementById('editorUsage').value.trim();let extra=document.getElementById('editorExtra').value.trim();let icon=document.getElementById('editorIcon').value.trim()||'📚';if(!name||!definition||!example||!usage){document.getElementById('editorStatus').textContent='Preencha o nome, o significado, um exemplo completo e a dica de uso antes de salvar.';return}const normalizedName=normalizeTopicTitle(name);const duplicateKey=Object.keys(topics).find(existingKey=>existingKey!==key&&normalizeTopicTitle(topics[existingKey].title)===normalizedName);if(duplicateKey){document.getElementById('editorStatus').textContent='Já existe um tema com esse nome. Selecione-o na lista para editar sem criar duplicatas.';renderEditorSelect(duplicateKey);loadEditorTopic();return}if(!key){key='tema_'+Date.now();}
+ const fields={definition,example,usage,extra};const bodyParts=['Definição / significado:',definition,'Exemplo de aplicação:',example,'Dica / como usar:',usage];if(extra)bodyParts.push('Conteúdo complementar / vocabulário:',extra);const body=bodyParts.join('\n\n');
+ topics[key]={title:name,icon,intro:intro||definition,editorFields:fields,editorText:body,body:`<div style="white-space:pre-wrap">${escapeEditorText(body)}</div>`};
+ try{localStorage.setItem('studyaiSpanishTopics',JSON.stringify(topics));}catch(e){}
+ renderEditorSelect(key);loadEditorTopic();document.getElementById('editorStatus').textContent='Conteúdo salvo! A explicação ficou organizada em significado, exemplo e dica de uso.';refreshHomeTopicCards();if(document.getElementById('topicContent')){document.getElementById('topicContent').innerHTML='<div class="topic-icon">'+escapeEditorText(icon)+'</div><h3>'+escapeEditorText(name)+'</h3><p>'+escapeEditorText(intro||definition)+'</p><div style="white-space:pre-wrap;line-height:1.8">'+escapeEditorText(body)+'</div>';}}
+function newEditorTopic(){const key='tema_'+Date.now();topics[key]={title:'Novo tema de espanhol',icon:'📚',intro:'Descrição do tema',editorFields:{definition:'',example:'',usage:'',extra:''},editorText:'',body:''};renderEditorSelect(key);loadEditorTopic();document.getElementById('editorName').focus();document.getElementById('editorStatus').textContent='Novo tema criado. Preencha os três campos guiados e salve.'}
+function deleteEditorTopic(){const key=document.getElementById('editorTopic').value;if(!key||originalTopicKeys.includes(key))return;if(!confirm('Excluir este tema de espanhol?'))return;delete topics[key];try{localStorage.setItem('studyaiSpanishTopics',JSON.stringify(topics));}catch(e){}renderEditorSelect(Object.keys(topics)[0]);loadEditorTopic();refreshHomeTopicCards();document.getElementById('editorStatus').textContent='Tema excluído.'}
+function refreshHomeTopicCards(){return;deduplicateTopics();const grid=document.querySelector('#inicio .grid');if(!grid)return;grid.innerHTML=Object.keys(topics).map(key=>{const t=topics[key];return `<article class="card"><div class="topic-icon">${escapeEditorText(t.icon||'📚')}</div><h3>${escapeEditorText(t.title)}</h3><p>${escapeEditorText(t.intro||'Conteúdo de espanhol para estudar.')}</p><button class="link" onclick="openTopic('${key}')">Estudar conteúdo →</button></article>`}).join('')+'<article class="card"><div class="topic-icon">📝</div><h3>Revisão para a prova</h3><p>Teste o que aprendeu com perguntas de múltipla escolha.</p><button class="link" onclick="go(&quot;quiz&quot;)">Fazer exercícios →</button></article>';const count=document.querySelector('#inicio .section-head span');if(count)count.textContent=Object.keys(topics).length+' temas de espanhol';}
+let editingFlashcardIndex=0;
+function renderFlashcardEditorSelect(selectedIndex){const sel=document.getElementById('editFlashcardSelect');if(!sel)return;sel.innerHTML='';cards.forEach((c,i)=>{const op=document.createElement('option');op.value=String(i);op.textContent=`${i+1}. ${c[0]} → ${c[1]}`;sel.appendChild(op)});if(selectedIndex!==undefined&&selectedIndex!==null&&cards[selectedIndex])sel.value=String(selectedIndex);loadFlashcardEditor()}
+function loadFlashcardEditor(){const sel=document.getElementById('editFlashcardSelect');if(!sel||!cards.length)return;const idx=Number(sel.value)||0;editingFlashcardIndex=idx;const c=cards[idx];if(!c)return;const d=cardDetails(c);document.getElementById('editFlashFront').value=c[0]||'';document.getElementById('editFlashBack').value=c[1]||'';document.getElementById('editFlashUsage').value=d.usage||'';document.getElementById('editFlashExampleEs').value=d.exampleEs||'';document.getElementById('editFlashExamplePt').value=d.examplePt||'';document.getElementById('editFlashNote').value=d.note||'';document.getElementById('flashcardEditorStatus').textContent='Edite os campos e salve para atualizar o cartão.'}
+function saveFlashcardEditor(){const idx=Number(document.getElementById('editFlashcardSelect').value);const f=document.getElementById('editFlashFront').value.trim(),b=document.getElementById('editFlashBack').value.trim();const d={meaning:b,usage:document.getElementById('editFlashUsage').value.trim(),exampleEs:document.getElementById('editFlashExampleEs').value.trim(),examplePt:document.getElementById('editFlashExamplePt').value.trim(),note:document.getElementById('editFlashNote').value.trim(),topic:cardDetails(cards[idx]).topic||flashcardCategory(cards[idx])};if(!f||!b||!d.usage||!d.exampleEs||!d.examplePt){document.getElementById('flashcardEditorStatus').textContent='Preencha termo, resposta, uso, exemplo em espanhol e tradução do exemplo.';return}const old=cards[idx];cards[idx]=[f,b,d.usage,d];persistFlashcards();if(sessionDeck.includes(old)){sessionDeck=sessionDeck.map(c=>c===old?cards[idx]:c);if(sessionResults.has(old)){const result=sessionResults.get(old);sessionResults.delete(old);sessionResults.set(cards[idx],result)}}renderFlashcardEditorSelect(idx);renderCard();document.getElementById('flashcardEditorStatus').textContent='Flashcard atualizado. As mudanças valem nesta sessão e neste navegador.'}
+function newFlashcardEditor(){const f=prompt('Digite o termo ou pergunta em espanhol:');if(!f||!f.trim())return;const b=prompt('Digite a resposta ou tradução principal:');if(!b||!b.trim())return;const c=[f.trim(),b.trim(),'',{meaning:b.trim(),usage:'',exampleEs:'',examplePt:'',note:''}];cards.push(c);persistFlashcards();sessionDeck=cards.slice();renderFlashcardEditorSelect(cards.length-1);document.getElementById('flashcardEditorStatus').textContent='Novo cartão criado. Complete os campos e clique em Salvar flashcard.'}
+function showFlashcardExample(){const box=document.getElementById('flashcardEditorExample');box.hidden=false;box.innerHTML='<b>Exemplo preenchido: ¿Cómo estás?</b><br><b>Resposta / tradução:</b> Como você está?<br><b>Como / quando usar:</b> Cumprimento informal usado para perguntar como alguém está.<br><b>Exemplo em espanhol:</b> Hola, ¿cómo estás hoy?<br><b>Tradução:</b> Olá, como você está hoje?<br><b>Nota de uso:</b> Em contextos formais, use “¿Cómo está usted?”.'}
+const _openContentEditor= openContentEditor;
+openContentEditor=function(){_openContentEditor();renderFlashcardEditorSelect(editingFlashcardIndex)};
+(function loadSavedSpanishTopics(){try{const saved=JSON.parse(localStorage.getItem('studyaiSpanishTopics')||'null');if(saved&&typeof saved==='object'){Object.keys(saved).forEach(k=>{if(saved[k]&&saved[k].title&&saved[k].body)topics[k]=saved[k]})}}catch(e){}refreshHomeTopicCards();updateFlashcardSetup()})();
+
+
+// Prática oral: reconhecimento de voz do navegador e avaliação contextual pela IA do servidor.
+let voiceDeck=[], voiceIndex=0, voiceCorrect=0, voiceEvaluated=false, voiceRecognition=null, voiceIsListening=false, voiceResults=[];
+function startVoicePractice(){
+ const selected=document.getElementById('voiceContent').value;
+ let deck=selected==='todos'?cards.slice():cards.filter(c=>flashcardCategory(c)===selected);
+ const amountInput=document.getElementById('voiceAmount');let amount=Number(amountInput.value);
+ if(!deck.length){document.getElementById('voiceSetupStatus').textContent='Não há cartões nesse conteúdo. Escolha outro tema ou adicione flashcards.';return}
+ if(!Number.isInteger(amount)||amount<1)amount=1;amount=Math.min(amount,deck.length,30);amountInput.value=String(amount);
+ deck=deck.slice().sort(()=>Math.random()-.5).slice(0,amount);
+ voiceDeck=deck;voiceIndex=0;voiceCorrect=0;voiceResults=[];voiceEvaluated=false;
+ document.getElementById('voiceSetup').hidden=true;document.getElementById('voiceSummary').hidden=true;document.getElementById('voiceExercise').hidden=false;renderVoiceQuestion();
+}
+function renderVoiceQuestion(){
+ stopVoiceRecognition();const c=voiceDeck[voiceIndex];if(!c){finishVoicePractice();return}
+ voiceEvaluated=false;document.getElementById('voiceProgress').textContent=`Pergunta ${voiceIndex+1} de ${voiceDeck.length}`;
+ document.getElementById('voiceTopicLabel').textContent=flashcardContentLabels[document.getElementById('voiceContent').value]||'Todos os conteúdos';
+ document.getElementById('voicePrompt').textContent=c[1]||'Diga a expressão em espanhol';
+ document.getElementById('voiceHint').textContent='Diga em espanhol a palavra ou expressão que corresponde a esse significado.';
+ document.getElementById('voiceTranscript').value='';document.getElementById('voiceFeedback').innerHTML='';
+ document.getElementById('voiceListeningStatus').textContent='Toque em “Falar resposta” e diga a resposta em espanhol.';
+ document.getElementById('voiceCheckBtn').disabled=false;document.getElementById('voiceNextBtn').disabled=true;document.getElementById('voiceNextBtn').textContent=voiceIndex===voiceDeck.length-1?'Ver resultado →':'Próxima pergunta →';
+}
+function getSpeechRecognition(){return window.SpeechRecognition||window.webkitSpeechRecognition||null}
+function recordVoiceAnswer(){
+ const Recognition=getSpeechRecognition();if(!Recognition){document.getElementById('voiceListeningStatus').textContent='Este navegador não oferece reconhecimento de voz. Você ainda pode digitar sua resposta e tocar em “Conferir com a IA”.';document.getElementById('voiceTranscript').focus();return}
+ stopVoiceRecognition();voiceRecognition=new Recognition();voiceRecognition.lang='es-ES';voiceRecognition.interimResults=true;voiceRecognition.continuous=false;voiceRecognition.maxAlternatives=1;voiceIsListening=true;
+ document.getElementById('voiceRecordBtn').disabled=true;document.getElementById('voiceStopBtn').disabled=false;document.getElementById('voiceListeningStatus').textContent='Estou ouvindo… fale claramente em espanhol.';
+ voiceRecognition.onresult=(event)=>{let transcript='';for(let i=0;i<event.results.length;i++)transcript+=event.results[i][0].transcript+' ';document.getElementById('voiceTranscript').value=transcript.trim()};
+ voiceRecognition.onerror=(event)=>{document.getElementById('voiceListeningStatus').textContent=event.error==='not-allowed'?'O microfone foi bloqueado. Permita o acesso nas configurações do navegador.':'Não consegui reconhecer a fala. Tente novamente ou digite sua resposta.';stopVoiceRecognition()};
+ voiceRecognition.onend=()=>{voiceIsListening=false;document.getElementById('voiceRecordBtn').disabled=false;document.getElementById('voiceStopBtn').disabled=true;if(document.getElementById('voiceTranscript').value.trim())document.getElementById('voiceListeningStatus').textContent='Transcrição pronta. Confira com a IA.'};
+ try{voiceRecognition.start()}catch(e){document.getElementById('voiceListeningStatus').textContent='Não foi possível iniciar o microfone. Tente novamente ou digite sua resposta.';stopVoiceRecognition()}
+}
+function stopVoiceRecognition(){if(voiceRecognition){try{voiceRecognition.onresult=null;voiceRecognition.stop()}catch(e){}voiceRecognition=null}voiceIsListening=false;const rec=document.getElementById('voiceRecordBtn'),stop=document.getElementById('voiceStopBtn');if(rec)rec.disabled=false;if(stop)stop.disabled=true}
+async function evaluateVoiceAnswer(){
+ if(voiceEvaluated)return;const transcript=document.getElementById('voiceTranscript').value.trim();if(!transcript){document.getElementById('voiceListeningStatus').textContent='Fale ou digite uma resposta antes de conferir.';return}
+ stopVoiceRecognition();const c=voiceDeck[voiceIndex];const button=document.getElementById('voiceCheckBtn');button.disabled=true;button.textContent='A IA está avaliando…';document.getElementById('voiceFeedback').innerHTML='<p class="notice">Comparando sua resposta com o conteúdo esperado…</p>';
+ try{
+  const response=await fetch('/api/evaluate-speaking',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({prompt:String(c[1]||''),target:String(c[0]||''),transcript,context:String(c[2]||'')+' '+JSON.stringify(cardDetails(c)||{})})});
+  const data=await response.json();if(!response.ok)throw new Error(data.error||'Não foi possível avaliar a resposta.');
+  const result=data.result||data;const correct=Boolean(result.correct);voiceEvaluated=true;if(correct)voiceCorrect++;voiceResults.push({prompt:c[1],target:c[0],transcript,correct,feedback:result.feedback||'',summary:result.summary||''});
+  document.getElementById('voiceFeedback').innerHTML=`<div class="feedback ${correct?'good':'bad'}"><b>${correct?'✅ ¡Muy bien! Resposta aceita.':'📘 Vamos revisar este conteúdo.'}</b><p>${escapeHtml(result.feedback||'A IA avaliou sua resposta.')}</p><p><b>Resposta esperada:</b> ${escapeHtml(c[0])}</p>${!correct?`<div class="editor-example"><b>Mini resumo para revisar</b><p>${escapeHtml(result.summary||c[2]||`“${c[0]}” corresponde a “${c[1]}”. Tente repetir a expressão em espanhol e observar como ela é escrita.`)}</p></div>`:''}</div>`;
+  document.getElementById('voiceListeningStatus').textContent='Resposta avaliada. Leia o feedback antes de continuar.';document.getElementById('voiceNextBtn').disabled=false;
+ }catch(error){document.getElementById('voiceFeedback').innerHTML=`<div class="feedback bad"><b>Não consegui avaliar agora.</b><p>${escapeHtml(error.message||'Confira a conexão e tente novamente.')}</p><p>Seu texto foi mantido. Você pode tentar de novo.</p></div>`;button.disabled=false}
+ finally{button.textContent='Conferir com a IA'}
+}
+function showVoiceAnswer(){const c=voiceDeck[voiceIndex];if(!c)return;document.getElementById('voiceFeedback').innerHTML=`<div class="editor-example"><b>Resposta esperada:</b> ${escapeHtml(c[0])}<p>${escapeHtml(c[2]||`“${c[0]}” significa “${c[1]}”.`)}</p><p class="notice">Ver a resposta não conta como acerto; tente dizê-la em voz alta para praticar.</p></div>`;document.getElementById('voiceNextBtn').disabled=false;voiceEvaluated=true;voiceResults.push({prompt:c[1],target:c[0],transcript:'(resposta revelada)',correct:false,feedback:'Resposta revelada',summary:c[2]||''})}
+function nextVoiceQuestion(){if(voiceIndex<voiceDeck.length-1){voiceIndex++;renderVoiceQuestion()}else finishVoicePractice()}
+function endVoicePractice(){stopVoiceRecognition();finishVoicePractice()}
+function finishVoicePractice(){stopVoiceRecognition();document.getElementById('voiceExercise').hidden=true;const summary=document.getElementById('voiceSummary');summary.hidden=false;const total=voiceResults.length;const pct=total?Math.round(voiceCorrect/total*100):0;summary.innerHTML=`<h2>Resultado da prática oral</h2><p>Você teve <b>${voiceCorrect} acerto(s)</b> entre ${total} resposta(s) avaliada(s) (${pct}%).</p>${voiceResults.filter(r=>!r.correct).map(r=>`<div class="fc-review-item"><strong>${escapeHtml(r.prompt)} → ${escapeHtml(r.target)}</strong><p>${escapeHtml(r.summary||r.feedback||'Revise a palavra e tente falar novamente.')}</p></div>`).join('')}<div class="editor-actions"><button class="btn" onclick="startVoicePractice()">Praticar novamente</button><button class="btn outline" onclick="resetVoicePractice()">Voltar às opções</button></div>`}
+function resetVoicePractice(){stopVoiceRecognition();document.getElementById('voiceSummary').hidden=true;document.getElementById('voiceSetup').hidden=false;document.getElementById('voiceExercise').hidden=true}
+
+</script>
+
+<button class="fixed-content-btn" onclick="openContentEditor()">✏️ Trocar conteúdo de espanhol</button>
+<div class="editor-overlay" id="contentEditor" role="dialog" aria-modal="true" aria-labelledby="editorTitle" onclick="if(event.target===this)closeContentEditor()">
+  <div class="editor-modal">
+    <div class="editor-top"><div><h2 id="editorTitle">Trocar conteúdo</h2><p class="subtitle" style="margin:7px 0 0">Cole um conteúdo do Sabin Digital. Ao salvar, ele passa a ser o conteúdo ativo do StudyAI.</p></div><button class="btn outline" onclick="closeContentEditor()" aria-label="Fechar">✕</button></div>
+    
+    <section class="card" style="margin:18px 0;padding:18px;border:1px solid var(--line,#dbe3ef)">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:14px;flex-wrap:wrap">
+        <div>
+          <h3 style="margin:0 0 6px">Sabin Digital</h3>
+          <p class="editor-note" style="margin:0 0 12px">Abra o portal da escola, copie o material desejado e cole-o abaixo. O StudyAI não acessa automaticamente as páginas protegidas.</p>
+        </div>
+        <a class="btn" href="https://sabindigital.albertsabin.com.br/d2l/home/18264" target="_blank" rel="noopener noreferrer" style="text-decoration:none;display:inline-flex;align-items:center;justify-content:center">Acessar Sabin Digital ↗</a>
+      </div>
+      <div style="margin-top:16px">
+        <h3 style="margin:0 0 8px">Meu conteúdo de estudo</h3>
+        <p class="editor-note">O conteúdo ativo fica disponível para as áreas de estudo desta versão do site. Cole o material novo e clique em Salvar conteúdo: o site inteiro passa a usar esse texto.</p>
+        <input type="hidden" id="activeStudyName" value="">
+        <label for="activeStudyText">Conteúdo para estudar</label>
+        <textarea class="field" id="activeStudyText" rows="9" maxlength="200000" placeholder="Cole aqui o conteúdo do Sabin Digital ou escreva o material que deseja estudar..." style="min-height:190px;resize:vertical"></textarea>
+        <div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:5px">
+          <small class="editor-field-help" id="activeStudyCharCount">0 caracteres</small>
+          <small class="editor-field-help">Máximo: 200.000 caracteres</small>
+        </div>
+        <div class="editor-actions" style="margin-top:14px">
+          <button class="btn" type="button" onclick="if(saveActiveStudyContent(false))closeContentEditor()">💾 Salvar conteúdo</button>
+          <button class="btn outline" type="button" onclick="if(saveActiveStudyContent(true))closeContentEditor()">Substituir conteúdo</button>
+          <button class="btn outline" type="button" onclick="clearActiveStudyDraft()">Limpar texto</button>
+          <button class="btn outline" type="button" onclick="loadActiveContentIntoEditor()">Editar conteúdo atual</button>
+        </div>
+        <div class="editor-example" id="activeStudyMaterial" style="margin-top:14px" aria-live="polite">
+          <b>Conteúdo ativo</b><p style="margin:7px 0 0">Nenhum conteúdo selecionado. Acesse o Sabin Digital, copie o material e cole-o aqui.</p>
+        </div>
+        <p class="editor-note" id="activeStudyStatus" aria-live="polite"></p>
+      </div>
+    </section>
+    
+
+  </div>
+</div>
+
+
+<script>
+(function(){
+  const STORAGE_KEY = 'studyaiActiveStudyContent';
+  const $ = id => document.getElementById(id);
+  function readActive(){
+    try {
+      const item = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null');
+      return item && typeof item === 'object' && typeof item.text === 'string' ? item : null;
+    } catch (_) { return null; }
+  }
+  function setStatus(message, isError=false){
+    const el = $('activeStudyStatus');
+    if(el){ el.textContent = message; el.style.color = isError ? '#b42318' : ''; }
+  }
+  function updateCount(){
+    const field = $('activeStudyText'), count = $('activeStudyCharCount');
+    if(field && count) count.textContent = field.value.length.toLocaleString('pt-BR') + ' caracteres';
+  }
+  function renderActive(){
+    const item = readActive(), box = $('activeStudyMaterial');
+    if(!box) return;
+    if(!item){
+      box.innerHTML = '<b>Conteúdo ativo</b><p style="margin:7px 0 0">Nenhum conteúdo selecionado. Acesse o Sabin Digital, copie o material e cole-o aqui.</p>';
+      return;
+    }
+    const safeName = String(item.name || 'Conteúdo de estudo');
+    const safeDate = item.updatedAt ? new Date(item.updatedAt).toLocaleString('pt-BR') : '';
+    const safeText = String(item.text || '');
+    box.textContent = '';
+    const title = document.createElement('b'); title.textContent = 'Conteúdo ativo'; box.appendChild(title);
+    const name = document.createElement('p'); name.style.margin = '7px 0'; name.textContent = safeName + ' · Ativo'; box.appendChild(name);
+    const meta = document.createElement('small'); meta.className = 'editor-field-help';
+    meta.textContent = safeText.length.toLocaleString('pt-BR') + ' caracteres' + (safeDate ? ' · Atualizado em ' + safeDate : '');
+    box.appendChild(meta);
+    const preview = document.createElement('p'); preview.style.margin = '10px 0 0'; preview.style.whiteSpace = 'pre-wrap';
+    preview.textContent = safeText.length > 700 ? safeText.slice(0,700) + '…' : safeText;
+    box.appendChild(preview);
+  }
+  function renderMainActiveContent(){
+    const item=readActive();
+    const panel=$('activeContentStudyView'), title=$('activeContentStudyTitle'), meta=$('activeContentStudyMeta'), text=$('activeContentStudyText'), grid=$('defaultTopicGrid'), topic=$('topicContent');
+    if(!panel||!grid||!topic)return;
+    const home=$('homeActiveStudy');
+    if(!item){panel.hidden=true;grid.hidden=false;topic.hidden=false;if(home)home.innerHTML='<b>Nenhum conteúdo selecionado</b><p>Abra “Trocar conteúdo”, copie seu material do Sabin Digital e salve. As ferramentas com IA poderão usar esse material.</p>';return;}
+    panel.hidden=false;grid.hidden=true;topic.hidden=true;
+    if(title)title.textContent=String(item.name||'Conteúdo de estudo');
+    if(meta)meta.textContent=(String(item.text||'').length).toLocaleString('pt-BR')+' caracteres · versão '+String(item.revision||1);
+    if(text)text.textContent=String(item.text||'');
+    if(home){home.textContent='';const b=document.createElement('b');b.textContent=String(item.name||'Conteúdo de estudo')+' · Conteúdo ativo';home.appendChild(b);const m=document.createElement('p');m.style.margin='6px 0';m.textContent=String(item.text||'').length.toLocaleString('pt-BR')+' caracteres · atualizado '+(item.updatedAt?new Date(item.updatedAt).toLocaleString('pt-BR'):'agora');home.appendChild(m);const preview=document.createElement('p');preview.style.whiteSpace='pre-wrap';preview.style.overflowWrap='anywhere';preview.textContent=String(item.text||'').slice(0,700)+(String(item.text||'').length>700?'…':'');home.appendChild(preview);const btn=document.createElement('button');btn.className='btn outline';btn.type='button';btn.textContent='Ver material completo';btn.onclick=()=>go('conteudos');home.appendChild(btn);} 
+  }
+  window.renderMainActiveContent=renderMainActiveContent;
+  window.renderActiveStudyContent=renderActive;
+  window.getActiveStudyContent = function(){ return readActive(); };
+  window.saveActiveStudyContent = function(replacing){
+    const text = $('activeStudyText').value.trim();
+    const name = (text.split(/\r?\n/).map(line=>line.trim()).find(Boolean)||'Conteúdo do Sabin Digital').slice(0,160);
+    const current = readActive();
+    if(!text){ setStatus('Cole ou escreva o conteúdo que deseja estudar.', true); $('activeStudyText').focus(); return false; }
+    if(text.length > 200000){ setStatus('O conteúdo ultrapassa o limite de 200.000 caracteres.', true); return false; }
+    const now = new Date().toISOString();
+    const next = {id: (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : String(Date.now()), revision: Number(current && current.revision || 0) + 1, name, text, createdAt: now, updatedAt: now, active: true};
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+      $('activeStudyText').value=''; updateCount();
+      renderActive();
+      renderMainActiveContent();
+      window.dispatchEvent(new CustomEvent('studyai:content-updated', {detail: {id: next.id, revision: next.revision, name: next.name, updatedAt: next.updatedAt}}));
+      setStatus('Conteúdo salvo! O material principal do site foi atualizado. As próximas atividades com IA usarão este texto.');
+      return true;
+    } catch (e) {
+      setStatus('Não foi possível salvar. O armazenamento do navegador pode estar cheio; o conteúdo anterior foi preservado.', true); return false;
+    }
+  };
+  window.clearActiveStudyDraft = function(){
+    const field = $('activeStudyText'), name = $('activeStudyName');
+    if(!field || !name) return;
+    if((field.value.trim() || name.value.trim()) && !window.confirm('Deseja limpar os campos de edição? O conteúdo ativo salvo não será apagado.')) return;
+    field.value = ''; name.value = ''; updateCount(); setStatus('Campos de edição limpos. O conteúdo ativo salvo foi mantido.');
+  };
+  document.addEventListener('DOMContentLoaded', function(){
+    const field = $('activeStudyText'), name = $('activeStudyName');
+    if(field) field.addEventListener('input', updateCount);
+    const item = readActive();
+    updateCount(); renderActive(); renderMainActiveContent();
+  });
+})();
+</script>
+
+
+<script>
+(function(){
+ const ACTIVE_KEY='studyaiActiveStudyContent';
+ let aiDeck=[], aiIndex=0, aiFlipped=false, aiRatings=new Map(), aiSessionMeta=null, aiReviewOnly=false;
+ const $=id=>document.getElementById(id);
+ function getActive(){try{const x=JSON.parse(localStorage.getItem(ACTIVE_KEY)||'null');return x&&typeof x.text==='string'&&x.text.trim()?x:null}catch(_){return null}}
+ function safeText(el,text){if(el)el.textContent=text}
+ function updateActiveSummary(){const x=getActive(), box=$('fcActiveMaterialSummary'), full=$('fcActiveMaterialFull');if(!box)return;box.textContent='';if(!x){const b=document.createElement('b');b.textContent='Nenhum conteúdo ativo';box.appendChild(b);const p=document.createElement('p');p.textContent='Acesse “Trocar conteúdo do espanhol”, cole seu material e salve-o para gerar flashcards personalizados.';box.appendChild(p);if(full)full.textContent='';return}const b=document.createElement('b');b.textContent=(x.name||'Conteúdo de estudo')+' · Material ativo';box.appendChild(b);const meta=document.createElement('p');meta.style.margin='6px 0';meta.textContent=(x.text.length).toLocaleString('pt-BR')+' caracteres · será usado como fonte principal';box.appendChild(meta);const p=document.createElement('p');p.style.whiteSpace='pre-wrap';p.textContent=x.text.length>420?x.text.slice(0,420)+'…':x.text;box.appendChild(p);if(full)full.textContent=x.text}
+ window.updateAIFCSourceMode=function(){const temp=$('fcMaterialMode').value==='temporary';$('fcTemporaryFields').hidden=!temp;$('fcActiveActions').hidden=temp;updateActiveSummary()};
+ window.updateAIFCTempCount=function(){const t=$('aiFcTempText').value;$('aiFcTempCount').textContent=t.length.toLocaleString('pt-BR')+' caracteres · limite de 50.000 caracteres';};
+ window.useActiveAIFCContent=function(){$('fcMaterialMode').value='active';$('aiFcTempName').value='';$('aiFcTempText').value='';updateAIFCTempCount();updateAIFCSourceMode();$('aiFcStatus').textContent='Usando novamente o conteúdo ativo salvo.'};
+ window.openActiveStudyEditor=function(){openContentEditor()};
+ function showStatus(msg,error=false){const el=$('aiFcStatus');el.textContent=msg;el.style.color=error?'#b42318':''}
+ window.generateAIFlashcards=async function(useTemporary){const btn=$('generateAIFCBtn'), temp=$('fcMaterialMode').value==='temporary';if(btn.disabled)return;let material,name,source;if(useTemporary||temp){name=$('aiFcTempName').value.trim()||'Material temporário';material=$('aiFcTempText').value.trim();source='temporário';if(!material){showStatus('Cole ou escreva o conteúdo temporário antes de gerar os cartões.',true);$('aiFcTempText').focus();return}if(material.length<40){showStatus('O texto está muito curto. Cole pelo menos algumas frases ou parágrafos para a IA conseguir criar cartões úteis.',true);return}if(material.length>50000){showStatus('O texto ultrapassa 50.000 caracteres. Divida o material em partes; o texto original não foi cortado.',true);return}}else{const active=getActive();if(!active){showStatus('Nenhum conteúdo ativo selecionado. Acesse “Trocar conteúdo do espanhol”, cole seu material e salve-o antes de gerar flashcards.',true);return}name=String(active.name||'Conteúdo ativo');material=active.text;source='ativo';if(material.trim().length<40){showStatus('O conteúdo ativo está muito curto. Adicione mais material antes de gerar cartões.',true);return}if(material.length>50000){showStatus('O conteúdo ativo tem '+material.length.toLocaleString('pt-BR')+' caracteres, acima do limite de 50.000 por geração. Divida o material em partes no editor de conteúdo. O texto salvo não foi alterado.',true);return}}
+ const amount=Number($('aiFcAmount').value), type=$('aiFcType').value, difficulty=$('aiFcDifficulty').value;btn.disabled=true;btn.textContent='Gerando…';showStatus('Enviando o material ao servidor e aguardando a IA…');try{const r=await fetch('/api/flashcards',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({materialName:name,material,amount,type,difficulty,sourceMode:source,sourceId:source==='ativo'?(getActive()?.id||null):null,sourceRevision:source==='ativo'?(getActive()?.revision||null):null,sourceUpdatedAt:source==='ativo'?(getActive()?.updatedAt||null):null})});let data;try{data=await r.json()}catch(_){throw new Error('O servidor retornou uma resposta inválida. Tente novamente.')}if(!r.ok)throw new Error(data.error||'Não foi possível gerar os flashcards.');if(!Array.isArray(data.cards)||data.cards.length!==amount)throw new Error('A resposta da IA não passou na validação. Tente gerar novamente.');aiDeck=data.cards.map((c,i)=>({id:String(c.id||'fc-'+Date.now()+'-'+i),front:String(c.front),back:String(c.back),type:String(c.type||type),difficulty:String(c.difficulty||difficulty),sourceReference:String(c.sourceReference||'')}));aiIndex=0;aiFlipped=false;aiRatings=new Map();const sourceRecord=source==='ativo'?getActive():null;aiSessionMeta={name,source,sourceId:sourceRecord?.id||null,sourceRevision:sourceRecord?.revision||null,sourceUpdatedAt:sourceRecord?.updatedAt||null,amount:aiDeck.length,type,difficulty,createdAt:new Date().toISOString()};aiReviewOnly=false;$('aiFCSessionMeta').hidden=false;$('aiFCSessionSummary').hidden=true;$('aiFCReviewCard').hidden=false;safeText($('aiFCMaterialLabel'),name);safeText($('aiFCTypeLabel'),type+' · '+difficulty);safeText($('aiFCSourceNote'),'Fonte: conteúdo '+(source==='ativo'?'ativo salvo':'temporário')+'. '+aiDeck.length+' cartões retornados e validados pelo servidor.');renderAIFlashcard();showStatus('Pronto: '+aiDeck.length+' flashcards gerados pela IA com base no material escolhido.');saveAIHistory();}catch(e){showStatus(e.message||'Falha de rede ao gerar cartões. Seus cartões da sessão anterior foram preservados.',true)}finally{btn.disabled=false;btn.textContent='✨ Gerar flashcards com IA'}};
+ function renderAIFlashcard(){if(!aiDeck.length)return;const c=aiDeck[aiIndex];safeText($('aiFCProgress'),'Cartão '+(aiIndex+1)+' de '+aiDeck.length);safeText($('aiFCReviewLabel'),aiFlipped?'Resposta':'Pergunta');safeText($('aiFCFront'),c.front);safeText($('aiFCBack'),c.back);safeText($('aiFCExplanation'),(c.sourceReference?'Referência no material: '+c.sourceReference:'')+'\nTipo: '+c.type+' · Dificuldade: '+c.difficulty);$('aiFCFlipCard').classList.toggle('flipped',aiFlipped);$('aiFCShowAnswer').textContent=aiFlipped?'Mostrar pergunta':'Mostrar resposta';$('aiFCRatingActions').hidden=!aiFlipped||aiRatings.has(c.id);$('aiFCRatingHint').textContent=aiRatings.has(c.id)?'Avaliação registrada: '+({unknown:'Não sabia',almost:'Quase',known:'Sabia'}[aiRatings.get(c.id)]):'Depois de revelar a resposta, escolha sua avaliação. Nenhum cartão é marcado como aprendido automaticamente.'}
+ window.flipAIFlashcard=function(){if(!aiDeck.length)return;aiFlipped=!aiFlipped;renderAIFlashcard()};window.moveAIFlashcard=function(delta){if(!aiDeck.length)return;aiIndex=(aiIndex+delta+aiDeck.length)%aiDeck.length;aiFlipped=false;renderAIFlashcard()};window.rateAIFlashcard=function(value){if(!aiDeck.length||!aiFlipped)return;aiRatings.set(aiDeck[aiIndex].id,value);saveAIHistory();const next=aiDeck.findIndex(c=>!aiRatings.has(c.id));if(next>=0){aiIndex=next;aiFlipped=false;renderAIFlashcard()}else showAISummary()};window.shuffleAIFlashcards=function(){if(aiDeck.length<2)return;const current=aiDeck[aiIndex];for(let i=aiDeck.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[aiDeck[i],aiDeck[j]]=[aiDeck[j],aiDeck[i]]}aiIndex=Math.max(0,aiDeck.indexOf(current));aiFlipped=false;renderAIFlashcard()};window.restartAIFlashcards=function(){if(!aiDeck.length)return;aiIndex=0;aiFlipped=false;aiRatings=new Map();$('aiFCSessionSummary').hidden=true;$('aiFCReviewCard').hidden=false;renderAIFlashcard();saveAIHistory()};
+ function showAISummary(){const known=aiDeck.filter(c=>aiRatings.get(c.id)==='known').length,almost=aiDeck.filter(c=>aiRatings.get(c.id)==='almost').length,unknown=aiDeck.filter(c=>aiRatings.get(c.id)==='unknown').length,review=aiDeck.filter(c=>['almost','unknown'].includes(aiRatings.get(c.id))),evaluated=known+almost+unknown,pct=evaluated?Math.round(known/evaluated*100):0;const box=$('aiFCSessionSummary');box.innerHTML='';const h=document.createElement('h2');h.textContent='Resultado da sessão';box.appendChild(h);const p=document.createElement('p');p.textContent='Cartões revisados: '+aiDeck.length+'. Avaliados: '+evaluated+'. Marcados como “Sabia”: '+pct+'%.';box.appendChild(p);const stats=document.createElement('div');stats.className='fc-summary-stats';[['Sabia',known],['Quase',almost],['Não sabia',unknown]].forEach(([label,n])=>{const d=document.createElement('div');d.className='fc-stat';const s=document.createElement('strong');s.textContent=n;const sp=document.createElement('span');sp.textContent=label;d.append(s,sp);stats.appendChild(d)});box.appendChild(stats);if(review.length){const h3=document.createElement('h3');h3.textContent='Cartões para revisar';box.appendChild(h3);review.forEach(c=>{const d=document.createElement('div');d.className='fc-review-item';const b=document.createElement('strong');b.textContent=c.front+' → '+c.back;const p=document.createElement('p');p.textContent='Avaliação: '+(aiRatings.get(c.id)==='unknown'?'Não sabia':'Quase');d.append(b,p);box.appendChild(d)})}const actions=document.createElement('div');actions.className='fc-actions';actions.style.marginTop='16px';if(review.length){const reviewBtn=document.createElement('button');reviewBtn.className='btn';reviewBtn.textContent='Revisar os que errei ou não sabia';reviewBtn.onclick=()=>startAIReview(review);actions.appendChild(reviewBtn)}const again=document.createElement('button');again.className='btn outline';again.textContent='Refazer sessão';again.onclick=restartAIFlashcards;actions.appendChild(again);box.appendChild(actions);$('aiFCReviewCard').hidden=true;box.hidden=false;saveAIHistory()}
+ function startAIReview(list){aiDeck=list.slice();aiIndex=0;aiFlipped=false;aiRatings=new Map();aiReviewOnly=true;$('aiFCSessionSummary').hidden=true;$('aiFCReviewCard').hidden=false;renderAIFlashcard();showStatus('Sessão de revisão iniciada com '+aiDeck.length+' cartões marcados como “Não sabia” ou “Quase”.')}
+ function saveAIHistory(){try{const key='studyaiAIFlashcardHistory';let h=JSON.parse(localStorage.getItem(key)||'[]');if(!Array.isArray(h))h=[];if(!aiSessionMeta||!aiDeck.length)return;const item={...aiSessionMeta,ratings:aiDeck.map(c=>({id:c.id,front:c.front,rating:aiRatings.get(c.id)||null})),cardCount:aiDeck.length};if(h.length&&h[h.length-1].createdAt===item.createdAt)h[h.length-1]=item;else h.unshift(item);localStorage.setItem(key,JSON.stringify(h.slice(0,30)))}catch(_){}}
+ const convState={active:false,paused:false,busy:false,startedAt:null,messages:[],userCount:0,corrections:[],lastReply:'',recognition:null,finalTranscript:'',interimTranscript:'',sourceSnapshot:null,sourceChanged:false};
+ function conv$(id){return document.getElementById(id)}
+ function convReadActive(){try{const x=JSON.parse(localStorage.getItem('studyaiActiveStudyContent')||'null');return x&&typeof x.text==='string'&&x.text.trim()?x:null}catch(_){return null}}
+ function renderConversationActive(){const x=convReadActive(),box=conv$('convActiveMaterial'),full=conv$('convActiveFull');if(!box)return;box.textContent='';if(!x){const b=document.createElement('b');b.textContent='Nenhum conteúdo ativo';box.appendChild(b);const p=document.createElement('p');p.style.margin='7px 0 0';p.textContent='Para conversar com base no material escolar, abra “Trocar conteúdo do espanhol”, cole o texto e salve. A conversa livre funciona sem conteúdo ativo.';box.appendChild(p);if(full)full.textContent='';return}const b=document.createElement('b');b.textContent=(x.name||'Conteúdo de estudo')+' · Material ativo';box.appendChild(b);const meta=document.createElement('p');meta.style.margin='6px 0';meta.textContent=String(x.text.length).toLocaleString('pt-BR')+' caracteres · fonte da conversa quando selecionada';box.appendChild(meta);const p=document.createElement('p');p.style.whiteSpace='pre-wrap';p.textContent=x.text.length>420?x.text.slice(0,420)+'…':x.text;box.appendChild(p);if(full)full.textContent=x.text}
+ window.renderConversationActive=renderConversationActive;
+ function convAddMessage(role,text,extra){const box=conv$('convMessages'),d=document.createElement('div');d.className='msg '+(role==='user'?'user':'ai');d.textContent=text;box.appendChild(d);if(extra){const e=document.createElement('div');e.className='editor-example';e.style.margin='0 0 8px';e.textContent=extra;box.appendChild(e)}box.scrollTop=box.scrollHeight}
+ function convSetStatus(text,error=false){conv$('convStatus').textContent=text;conv$('convStatus').style.color=error?'#b42318':''}
+ function convHistorySave(){try{localStorage.setItem('studyaiConversationHistory',JSON.stringify(convState.messages.slice(-100)))}catch(_){}}
+ window.startConversationSession=function(){renderConversationActive();const mode=conv$('convMode').value,active=convReadActive();if(['material','perguntas'].includes(mode)&&!active){conv$('convSetupStatus').textContent='Selecione um conteúdo ativo ou mude para conversa livre.';return}convState.active=true;convState.paused=false;convState.busy=false;convState.startedAt=Date.now();convState.messages=[];convState.userCount=0;convState.corrections=[];convState.lastReply='';convState.sourceSnapshot=['material','perguntas'].includes(mode)?convReadActive():null;convState.sourceChanged=false;conv$('conversationRoom').hidden=false;conv$('convSummary').hidden=true;conv$('convMessages').textContent='';conv$('convInput').disabled=false;conv$('convSendBtn').disabled=false;conv$('convSessionLabel').textContent='Modo: '+conv$('convMode').selectedOptions[0].textContent+' · '+conv$('convLevel').value+(convState.sourceSnapshot?' · Material: '+(convState.sourceSnapshot.name||'Conteúdo ativo')+' (v'+(convState.sourceSnapshot.revision||1)+')':'');const greeting=mode==='material'||mode==='perguntas'?'¡Hola! Vamos a practicar con tu material. ¿Qué parte te gustaría explicar primero?':'¡Hola! Vamos a practicar español. ¿Cómo estás hoy?';convAddMessage('assistant',greeting);convState.messages.push({role:'assistant',content:greeting});convHistorySave();convSetStatus('Aguardando sua mensagem');conv$('convInput').focus()};
+ window.sendConversationMessage=async function(){if(!convState.active||convState.paused||convState.busy)return;const input=conv$('convInput'),message=input.value.trim();if(!message){input.focus();return}if(message.length>2000){convSetStatus('A mensagem ultrapassa 2.000 caracteres.',true);return}convState.busy=true;conv$('convSendBtn').disabled=true;convSetStatus('Processando sua mensagem…');convAddMessage('user',message);convState.messages.push({role:'user',content:message});convState.userCount++;input.value='';const mode=conv$('convMode').value,active=['material','perguntas'].includes(mode)?convState.sourceSnapshot:convReadActive(),correction=conv$('convCorrections').value;try{const payload={message,history:convState.messages.slice(-10,-1),mode,level:conv$('convLevel').value,scenario:conv$('convScenario').value,correctionMode:correction,materialName:active?.name||'',material:['material','perguntas'].includes(mode)?String(active?.text||'').slice(0,30000):'',sourceId:active?.id||null,sourceRevision:active?.revision||null,sourceUpdatedAt:active?.updatedAt||null};const response=await fetch('/api/conversation',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});let data;try{data=await response.json()}catch(_){throw new Error('O servidor retornou uma resposta inválida.')}if(!response.ok)throw new Error(data.error||'Não foi possível continuar a conversa.');if(typeof data.reply!=='string'||!data.reply.trim())throw new Error('A IA não retornou uma resposta válida. Tente novamente.');convState.messages.push({role:'assistant',content:data.reply});convState.lastReply=data.reply;if(data.correction&&correction!=='final'){convState.corrections.push({original:message,correction:data.correction,alternative:data.alternative||''});let feedback='Correção: '+data.correction+(data.alternative?'\nForma mais natural: '+data.alternative:'')+(data.explanation?'\nExplicação: '+data.explanation:'');convAddMessage('assistant',data.reply,feedback)}else{if(data.correction)convState.corrections.push({original:message,correction:data.correction,alternative:data.alternative||''});convAddMessage('assistant',data.reply)}conv$('convMicStatus').textContent=data.praise||'Resposta recebida. Você pode responder por texto ou voz.';convHistorySave();convSetStatus('Aguardando sua resposta');if(conv$('convSpeakReply').value==='auto')speakConversationText(data.reply)}catch(e){convState.messages.pop();convState.userCount=Math.max(0,convState.userCount-1);convAddMessage('assistant','Não consegui enviar esta mensagem. Seu texto foi preservado para você tentar novamente.');input.value=message;convSetStatus(e.message||'Erro de conexão',true)}finally{convState.busy=false;conv$('convSendBtn').disabled=false;input.focus()}};
+ function getConversationRecognition(){const SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR)return null;const rec=new SR();rec.lang=conv$('convVoiceLocale').value;rec.interimResults=true;rec.continuous=false;rec.maxAlternatives=1;rec.onstart=()=>{conv$('convMicStatus').textContent='Ouvindo… fale em espanhol.';convSetStatus('Ouvindo')};rec.onresult=e=>{let finalText='',interim='';for(let i=e.resultIndex;i<e.results.length;i++){const t=e.results[i][0]?.transcript||'';if(e.results[i].isFinal)finalText+=t;else interim+=t}convState.finalTranscript+=finalText;convState.interimTranscript=interim;conv$('convInput').value=(convState.finalTranscript+' '+interim).trim()};rec.onerror=e=>{const messages2={'not-allowed':'Permissão do microfone negada. Digite sua mensagem ou habilite a permissão nas configurações do navegador.','audio-capture':'Não foi encontrado um microfone disponível.','network':'O reconhecimento de voz teve uma falha de rede.','no-speech':'Nenhuma fala foi reconhecida. Tente novamente.'};conv$('convMicStatus').textContent=messages2[e.error]||'O reconhecimento de voz falhou. Você ainda pode digitar.';convSetStatus('Erro no reconhecimento de voz',true)};rec.onend=()=>{convState.recognition=null;conv$('convMicBtn').textContent='🎙 Falar';if(convState.finalTranscript.trim()){conv$('convMicStatus').textContent='Transcrição pronta. Confira e edite o texto antes de enviar.';conv$('convInput').focus()}else convSetStatus('Aguardando sua mensagem')};return rec}
+ window.toggleConversationRecognition=function(){if(!convState.active||convState.paused)return;if(convState.recognition){try{convState.recognition.stop()}catch(_){}return}const rec=getConversationRecognition();if(!rec){conv$('convMicStatus').textContent='Este navegador não oferece reconhecimento de voz compatível. Use o campo de texto.';return}convState.finalTranscript='';convState.interimTranscript='';convState.recognition=rec;conv$('convMicBtn').textContent='■ Parar de ouvir';try{rec.start()}catch(_){convState.recognition=null;conv$('convMicBtn').textContent='🎙 Falar';conv$('convMicStatus').textContent='Não foi possível iniciar o microfone. Tente novamente ou digite sua mensagem.'}};
+ function speakConversationText(text){if(!('speechSynthesis'in window)||!window.SpeechSynthesisUtterance){conv$('convMicStatus').textContent='A leitura em voz alta não está disponível neste navegador.';return}window.speechSynthesis.cancel();const utterance=new SpeechSynthesisUtterance(text);utterance.lang=conv$('convVoiceLocale').value;const voices=window.speechSynthesis.getVoices();const voice=voices.find(v=>v.lang.toLowerCase().startsWith(utterance.lang.toLowerCase().slice(0,5)))||voices.find(v=>v.lang.toLowerCase().startsWith('es'));if(voice)utterance.voice=voice;window.speechSynthesis.speak(utterance)}
+ window.speakLastConversationReply=function(){if(convState.lastReply)speakConversationText(convState.lastReply);else conv$('convMicStatus').textContent='Ainda não há uma resposta da IA para reproduzir.'};window.stopConversationSpeech=function(){if('speechSynthesis'in window)window.speechSynthesis.cancel()};
+ window.pauseConversationSession=function(){if(!convState.active)return;convState.paused=true;if(convState.recognition){try{convState.recognition.stop()}catch(_){}convState.recognition=null}stopConversationSpeech();convSetStatus('Sessão pausada');conv$('convMicStatus').textContent='A sessão está pausada. Toque em Continuar para voltar.'};window.resumeConversationSession=function(){if(!convState.active)return;convState.paused=false;convSetStatus('Aguardando sua mensagem');conv$('convMicStatus').textContent='Sessão retomada. Você pode falar ou digitar.';conv$('convInput').focus()};
+ window.endConversationSession=function(){if(!convState.active)return;pauseConversationSession();convState.active=false;const box=conv$('convSummary');box.textContent='';const h=document.createElement('h2');h.textContent='Resumo da conversa';box.appendChild(h);const mins=Math.max(0,Math.round((Date.now()-convState.startedAt)/60000));const p=document.createElement('p');p.textContent='Mensagens enviadas por você: '+convState.userCount+'. Duração aproximada: '+mins+' minuto(s).';box.appendChild(p);const h2=document.createElement('h3');h2.textContent='Correções registradas';box.appendChild(h2);if(!convState.corrections.length){const q=document.createElement('p');q.textContent='Nenhuma correção específica foi registrada nesta sessão. Isso não é uma nota de fluência.';box.appendChild(q)}else convState.corrections.slice(-10).forEach(c=>{const d=document.createElement('div');d.className='fc-review-item';const b=document.createElement('strong');b.textContent='Você escreveu: '+c.original;const p=document.createElement('p');p.textContent='Sugestão: '+c.correction+(c.alternative?' · Mais natural: '+c.alternative:'');d.append(b,p);box.appendChild(d)});const btn=document.createElement('button');btn.className='btn';btn.textContent='Nova conversa';btn.onclick=()=>startConversationSession();box.appendChild(btn);box.hidden=false;convHistorySave();convSetStatus('Sessão encerrada')};window.clearConversationHistory=function(){if(!confirm('Apagar o histórico local de conversação deste navegador?'))return;try{localStorage.removeItem('studyaiConversationHistory')}catch(_){}convState.messages=[];convState.corrections=[];conv$('convMicStatus').textContent='Histórico local apagado.'};
+ document.addEventListener('DOMContentLoaded',renderConversationActive);
+ document.addEventListener('DOMContentLoaded',()=>{updateActiveSummary();updateAIFCTempCount();const activeText=document.getElementById('activeStudyText');if(activeText){activeText.addEventListener('input',updateActiveSummary);const save=window.saveActiveStudyContent;window.saveActiveStudyContent=function(replacing){const r=save(replacing);setTimeout(updateActiveSummary,0);return r}}});
+})();
+
+// Simulados personalizados por IA; preserva o quiz rápido preexistente.
+let aiExamState=null, aiExamBusy=false, aiExamResults=null;
+const AI_EXAM_HISTORY_KEY='studyaiExamHistoryV1';
+function examReadActive(){try{if(typeof window.getActiveStudyContent==='function'){const a=window.getActiveStudyContent();if(a&&typeof a.text==='string'&&a.text.trim())return {name:String(a.name||'Conteúdo ativo'),text:a.text.trim(),id:a.id||null,revision:a.revision||null,updatedAt:a.updatedAt||null}}const raw=JSON.parse(localStorage.getItem('studyaiActiveStudyContent')||'null');if(raw&&typeof raw.text==='string'&&raw.text.trim())return {name:String(raw.name||'Conteúdo ativo'),text:raw.text.trim(),id:raw.id||null,revision:raw.revision||null,updatedAt:raw.updatedAt||null};}catch(e){}return null}
+function updateAIExamSourceSummary(){const a=examReadActive(),box=document.getElementById('examActiveSummary'),full=document.getElementById('examActiveFull');if(!box)return;box.textContent='';if(!a){const b=document.createElement('b');b.textContent='Nenhum conteúdo ativo selecionado';box.appendChild(b);const p=document.createElement('p');p.textContent='Acesse “Trocar conteúdo do espanhol”, cole seu material e salve-o. Você também pode escolher conteúdo temporário abaixo.';box.appendChild(p);if(full)full.textContent='';return}const b=document.createElement('b');b.textContent=a.name+' · Conteúdo ativo';box.appendChild(b);const p=document.createElement('p');p.style.whiteSpace='pre-wrap';p.textContent=a.text.length>450?a.text.slice(0,450)+'…':a.text;box.appendChild(p);const meta=document.createElement('small');meta.textContent=a.text.length.toLocaleString('pt-BR')+' caracteres · será a fonte principal do simulado';box.appendChild(meta);if(full)full.textContent=a.text}
+window.updateAIExamSourceSummary=updateAIExamSourceSummary;
+function updateExamSourceMode(){const mode=document.getElementById('examMaterialMode').value;document.getElementById('examTemporaryFields').hidden=mode!=='temporary';updateAIExamSourceSummary()}
+function updateExamTempCount(){const t=document.getElementById('examTempText').value;document.getElementById('examTempCount').textContent=t.length.toLocaleString('pt-BR')+' caracteres · limite de 50.000';document.getElementById('examTempCount').classList.toggle('exam-status-error',t.length>=50000)}
+function setAIExamStatus(message,isError=false){const e=document.getElementById('examStatus');e.textContent=message;e.classList.toggle('exam-status-error',isError);e.classList.toggle('exam-status-success',!isError)}
+function getAIExamSource(){if(document.getElementById('examMaterialMode').value==='temporary'){const text=document.getElementById('examTempText').value.trim(),name=document.getElementById('examTempName').value.trim()||'Material temporário';if(!text)throw new Error('Cole ou escreva o conteúdo temporário antes de gerar o simulado.');if(text.length>50000)throw new Error('O material ultrapassa 50.000 caracteres. Reduza o texto manualmente; nada foi cortado.');return {name,text,temporary:true,id:null,revision:null,updatedAt:null}}const a=examReadActive();if(!a)throw new Error('Nenhum conteúdo ativo encontrado. Selecione um conteúdo ou escolha “Inserir outro conteúdo”.');if(a.text.length>50000)throw new Error('O conteúdo ativo ultrapassa o limite de 50.000 caracteres. Ajuste o material no editor; ele não será cortado automaticamente.');if(a.text.length<20)throw new Error('O material está curto demais para gerar um simulado confiável. Adicione mais conteúdo.');return {...a,temporary:false,id:a.id||null,revision:a.revision||null,updatedAt:a.updatedAt||null}}
+async function generateAIExam(options={}){if(aiExamBusy)return;let source;try{source=getAIExamSource()}catch(e){setAIExamStatus(e.message,true);return}const btn=document.getElementById('examGenerateBtn');aiExamBusy=true;btn.disabled=true;btn.textContent='Gerando questões…';setAIExamStatus('A IA está analisando o material e preparando as questões.');try{const config={materialName:source.name,material:source.text,amount:Number(options.amount||document.getElementById('examAmount').value),type:options.type||document.getElementById('examType').value,difficulty:options.difficulty||document.getElementById('examDifficulty').value,focus:options.focus||document.getElementById('examFocus').value,mode:options.mode||document.getElementById('examMode').value,sourceMode:source.temporary?'temporary':'active',sourceId:source.id||null,sourceRevision:source.revision||null,sourceUpdatedAt:source.updatedAt||null};if(options.reviewTopics)config.reviewTopics=options.reviewTopics;const response=await fetch('/api/exams/generate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(config)});const data=await response.json();if(!response.ok)throw new Error(data.error||'Não foi possível gerar o simulado.');if(!data.examId||!Array.isArray(data.questions)||data.questions.length!==config.amount)throw new Error('A resposta do servidor não passou na validação. Tente novamente.');aiExamState={examId:data.examId,questions:data.questions.map(q=>({...q,answer:null,flagged:false,practiceFeedback:null})),index:0,materialName:source.name,sourceId:source.id||null,sourceRevision:source.revision||null,sourceUpdatedAt:source.updatedAt||null,temporary:source.temporary,config,startedAt:Date.now(),submitted:false};aiExamResults=null;document.getElementById('aiExamSetup').hidden=true;document.getElementById('aiExamResults').hidden=true;document.getElementById('aiExamRunner').hidden=false;renderAIExamQuestion();setAIExamStatus('Simulado gerado pela IA. Boa sorte!');}catch(e){setAIExamStatus(e.message||'Erro ao gerar simulado. Os resultados anteriores foram preservados.',true)}finally{aiExamBusy=false;btn.disabled=false;btn.textContent='✨ Gerar simulado com IA'}}
+function renderAIExamQuestion(){if(!aiExamState)return;const s=aiExamState,q=s.questions[s.index];document.getElementById('examProgress').textContent=`Questão ${s.index+1} de ${s.questions.length}`;document.getElementById('examProgressBar').style.width=((s.index+1)/s.questions.length*100)+'%';document.getElementById('examMaterialLabel').textContent=s.materialName;document.getElementById('examTypeLabel').textContent=examTypeLabel(q.type);document.getElementById('examDifficultyLabel').textContent=s.config.difficulty;document.getElementById('examFlagLabel').textContent=q.flagged?'Marcada para revisar':'Não marcada';document.getElementById('examFlagBtn').textContent=q.flagged?'★ Marcada para revisar':'☆ Marcar para revisar';document.getElementById('examQuestionText').textContent=q.prompt;document.getElementById('examQuestionSource').textContent=q.sourceReference?'Referência: '+q.sourceReference:'';const area=document.getElementById('examAnswerArea');area.textContent='';if(Array.isArray(q.options)&&q.options.length){q.options.forEach((opt,i)=>{const label=document.createElement('label');label.className='exam-option';const input=document.createElement('input');input.type='radio';input.name='aiExamAnswer';input.value=opt;input.checked=q.answer===opt;input.disabled=s.submitted;input.addEventListener('change',()=>{q.answer=opt;renderAIExamPalette();if(s.config.mode==='pratica')gradeAIExamPractice(s.index)});const span=document.createElement('span');span.textContent=String.fromCharCode(65+i)+'. '+opt;label.append(input,span);area.appendChild(label)})}else{const input=document.createElement('textarea');input.className='field exam-text-answer';input.placeholder=q.type==='traducao'?'Digite a tradução…':'Escreva sua resposta…';input.value=q.answer||'';input.disabled=s.submitted;input.maxLength=1000;input.addEventListener('input',()=>{q.answer=input.value;renderAIExamPalette()});area.appendChild(input)}document.getElementById('examPracticeFeedback').textContent=q.practiceFeedback||'';document.getElementById('examSubmitBtn').disabled=s.submitted;renderAIExamPalette()}
+function examTypeLabel(type){return ({multipla_escolha:'Múltipla escolha',verdadeiro_falso:'Verdadeiro ou falso',completar:'Completar frases',traducao:'Tradução'})[type]||'Misto'}
+function renderAIExamPalette(){const el=document.getElementById('examQuestionPalette');if(!el||!aiExamState)return;el.textContent='';aiExamState.questions.forEach((q,i)=>{const b=document.createElement('button');b.type='button';b.className='btn outline exam-palette-btn';b.textContent=String(i+1)+(q.flagged?' ★':'');b.title=q.answer===null||q.answer===''?'Não respondida':'Respondida';if(i===aiExamState.index)b.style.borderColor='var(--blue)';if(q.answer!==null&&q.answer!=='')b.style.background='#eef8f1';b.onclick=()=>{aiExamState.index=i;renderAIExamQuestion()};el.appendChild(b)})}
+function moveAIExam(delta){if(!aiExamState||aiExamState.submitted)return;aiExamState.index=Math.max(0,Math.min(aiExamState.questions.length-1,aiExamState.index+delta));renderAIExamQuestion()}
+function toggleAIExamFlag(){if(!aiExamState)return;const q=aiExamState.questions[aiExamState.index];q.flagged=!q.flagged;renderAIExamQuestion()}
+async function gradeAIExamPractice(index){const s=aiExamState,q=s.questions[index];if(!q||q.answer===null||q.answer==='')return;try{const response=await fetch('/api/exams/grade-one',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({examId:s.examId,questionId:q.id,answer:q.answer})});const data=await response.json();if(response.ok){q.practiceFeedback=(data.correct?'Correto! ':'Vamos revisar. ')+(data.explanation||'');document.getElementById('examPracticeFeedback').textContent=q.practiceFeedback}}catch(e){q.practiceFeedback='Não foi possível conferir agora. Sua resposta continua salva nesta sessão.';document.getElementById('examPracticeFeedback').textContent=q.practiceFeedback}}
+async function submitAIExam(){if(!aiExamState||aiExamBusy||aiExamState.submitted)return;const unanswered=aiExamState.questions.filter(q=>q.answer===null||q.answer==='').length;if(unanswered&&!confirm(`Você deixou ${unanswered} questão(ões) sem resposta. Deseja entregar assim mesmo?`))return;if(!confirm('Entregar o simulado e ver as respostas e explicações?'))return;aiExamBusy=true;const btn=document.getElementById('examSubmitBtn');btn.disabled=true;btn.textContent='Corrigindo…';try{const response=await fetch('/api/exams/grade',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({examId:aiExamState.examId,answers:aiExamState.questions.map(q=>({questionId:q.id,answer:q.answer}))})});const data=await response.json();if(!response.ok)throw new Error(data.error||'Não foi possível corrigir o simulado.');aiExamState.submitted=true;aiExamResults=data;showAIExamResults(data);document.getElementById('aiExamRunner').hidden=true;document.getElementById('aiExamResults').hidden=false;saveAIExamHistory(data);setAIExamStatus('Simulado corrigido. O resultado foi calculado a partir das suas respostas.')}catch(e){setAIExamStatus(e.message||'Falha ao corrigir. Suas respostas foram preservadas; tente novamente.',true)}finally{aiExamBusy=false;btn.disabled=!!aiExamState?.submitted;btn.textContent='Entregar simulado'}}
+function showAIExamResults(data){const box=document.getElementById('aiExamResults'),questions=data.results||[];const answered=questions.filter(q=>q.answer!==null&&q.answer!=='').length,correct=questions.filter(q=>q.correct).length,incorrect=answered-correct,percent=answered?Math.round(correct/answered*100):0,missed=questions.filter(q=>!q.correct);box.textContent='';const title=document.createElement('h2');title.textContent='Resultado do simulado';box.appendChild(title);const summary=document.createElement('p');summary.textContent=`${correct} acertos de ${questions.length} questões · ${incorrect} erros · ${questions.length-answered} em branco · ${percent}% de acerto entre as respondidas. Resultado de prática do StudyAI, não uma nota oficial da escola.`;box.appendChild(summary);questions.forEach((q,i)=>{const item=document.createElement('div');item.className='exam-result-item';const h=document.createElement('strong');h.textContent=`${i+1}. ${q.correct?'✓ Correta':'✗ '+(q.answer===null||q.answer===''?'Em branco':'Incorreta')} — ${q.prompt}`;const your=document.createElement('p');your.textContent='Sua resposta: '+(q.answer||'Não respondida');const right=document.createElement('p');right.textContent='Resposta correta: '+q.correctAnswer;const exp=document.createElement('p');exp.textContent='Explicação: '+(q.explanation||'Sem explicação adicional.');item.append(h,your,right,exp);if(q.sourceReference){const ref=document.createElement('small');ref.textContent='Referência: '+q.sourceReference;item.appendChild(ref)}box.appendChild(item)});const actions=document.createElement('div');actions.className='fc-actions';const review=document.createElement('button');review.className='btn';review.textContent='Revisar questões erradas';review.disabled=!missed.length;review.onclick=()=>showAIExamReview(missed);const newRelated=document.createElement('button');newRelated.className='btn outline';newRelated.textContent='Gerar novas questões para revisar';newRelated.disabled=!missed.length;newRelated.onclick=()=>generateAIExam({amount:Math.min(5,Math.max(5,missed.length)),focus:'revisão geral',reviewTopics:missed.map(q=>q.topic||q.prompt).join('; ').slice(0,1200)});const again=document.createElement('button');again.className='btn outline';again.textContent='Novo simulado';again.onclick=()=>{box.hidden=true;document.getElementById('aiExamSetup').hidden=false;document.getElementById('aiExamRunner').hidden=true;aiExamState=null};actions.append(review,newRelated,again);box.appendChild(actions)}
+function showAIExamReview(missed){const box=document.getElementById('aiExamResults');const section=document.createElement('div');section.className='exam-review-block';const h=document.createElement('h3');h.textContent='Revisão das questões erradas ou em branco';section.appendChild(h);missed.forEach((q,i)=>{const p=document.createElement('p');p.textContent=`${i+1}. ${q.prompt}\nSua resposta: ${q.answer||'Em branco'}\nResposta correta: ${q.correctAnswer}\n${q.explanation||''}`;section.appendChild(p)});box.insertBefore(section,box.lastElementChild)}
+function readAIExamHistory(){try{const h=JSON.parse(localStorage.getItem(AI_EXAM_HISTORY_KEY)||'[]');return Array.isArray(h)?h:[]}catch(e){return []}}
+function saveAIExamHistory(data){try{const h=readAIExamHistory();h.unshift({date:new Date().toISOString(),materialName:aiExamState?.materialName||data.materialName||'Material',amount:(data.results||[]).length,correct:(data.results||[]).filter(q=>q.correct).length,percent:data.percent??null});localStorage.setItem(AI_EXAM_HISTORY_KEY,JSON.stringify(h.slice(0,30)));renderAIExamHistory()}catch(e){setAIExamStatus('Simulado corrigido, mas o navegador não permitiu salvar o histórico local.',true)}}
+function renderAIExamHistory(){const el=document.getElementById('aiExamHistory');if(!el)return;const h=readAIExamHistory();el.textContent='';if(!h.length){el.textContent='Nenhum simulado concluído neste navegador.';return}h.forEach(x=>{const p=document.createElement('p');const date=new Date(x.date);p.textContent=`${date.toLocaleString('pt-BR')} — ${x.materialName}: ${x.correct}/${x.amount} acertos${typeof x.percent==='number'?' ('+x.percent+'%)':''}`;el.appendChild(p)})}
+function clearAIExamHistory(){if(!confirm('Apagar o histórico de simulados salvo neste navegador?'))return;localStorage.removeItem(AI_EXAM_HISTORY_KEY);renderAIExamHistory()}
+function cancelAIExam(){if(aiExamState&&!aiExamState.submitted&&!confirm('Sair agora? As respostas desta sessão serão perdidas.'))return;aiExamState=null;document.getElementById('aiExamRunner').hidden=true;document.getElementById('aiExamSetup').hidden=false;setAIExamStatus('Você saiu do simulado. Nenhuma nota foi registrada.')}
+document.addEventListener('DOMContentLoaded',()=>{updateAIExamSourceSummary();renderAIExamHistory();const active=$('activeStudyText');if(active)active.addEventListener('input',updateAIExamSourceSummary);const oldSave=window.saveActiveStudyContent;if(typeof oldSave==='function'&&!oldSave.__examWrapped){const wrapped=function(replacing){const r=oldSave(replacing);setTimeout(updateAIExamSourceSummary,0);return r};wrapped.__examWrapped=true;window.saveActiveStudyContent=wrapped}});
+
+</script>
+
+
+<script>
+(function(){
+ const KEY='studyaiActiveStudyContent', HISTORY_KEY='studyaiSummaryHistory';
+ const $=id=>document.getElementById(id); let summaryBusy=false,lastSummary=null,lastSource=null,lastConfig=null;
+ function activeContent(){try{if(typeof window.getActiveStudyContent==='function'){const x=window.getActiveStudyContent();if(x&&typeof x.text==='string'&&x.text.trim())return {name:String(x.name||'Conteúdo ativo'),text:x.text.trim(),id:x.id||null,revision:x.revision||null,updatedAt:x.updatedAt||null}}const x=JSON.parse(localStorage.getItem(KEY)||'null');if(x&&typeof x.text==='string'&&x.text.trim())return {name:String(x.name||'Conteúdo ativo'),text:x.text.trim(),id:x.id||null,revision:x.revision||null,updatedAt:x.updatedAt||null}}catch(_){}return null}
+ window.renderActiveSummaryInfo=renderActiveSummaryInfo;
+ function setStatus(msg,error=false){const el=$('summaryStatus');if(el){el.textContent=msg;el.style.color=error?'#b42318':''}}
+ window.updateSummarySourceMode=function(){const mode=$('summarySourceMode').value;$('summaryTemporaryFields').hidden=mode!=='temporary';if(mode==='active')setStatus('Será usado o conteúdo ativo salvo.');else setStatus('O texto temporário será usado apenas neste resumo e não substituirá o conteúdo ativo.')}
+ window.updateSummaryTempCount=function(){const t=$('summaryTempText');if(t)$('summaryTempCount').textContent=t.value.length.toLocaleString('pt-BR')+' caracteres · limite de 50.000'}
+ window.useActiveSummaryContent=function(){$('summarySourceMode').value='active';$('summaryTempName').value='';$('summaryTempText').value='';updateSummaryTempCount();updateSummarySourceMode()}
+ function renderActiveSummaryInfo(){const a=activeContent(),box=$('summaryActiveInfo'),full=$('summaryActiveFull');if(!box)return;box.textContent='';if(!a){const b=document.createElement('b');b.textContent='Nenhum conteúdo ativo selecionado';box.appendChild(b);const p=document.createElement('p');p.textContent='Acesse “Trocar conteúdo do espanhol”, cole seu material e salve-o. Você também pode inserir conteúdo temporário abaixo.';box.appendChild(p);if(full)full.textContent='';return}const b=document.createElement('b');b.textContent=a.name+' · Conteúdo ativo';box.appendChild(b);const p=document.createElement('p');p.style.whiteSpace='pre-wrap';p.textContent=a.text.length>500?a.text.slice(0,500)+'…':a.text;box.appendChild(p);const meta=document.createElement('small');meta.textContent=a.text.length.toLocaleString('pt-BR')+' caracteres · fonte principal para os resumos';box.appendChild(meta);if(full)full.textContent=a.text}
+ function sourceForGeneration(){if($('summarySourceMode').value==='temporary'){const name=$('summaryTempName').value.trim()||'Material temporário';const text=$('summaryTempText').value.trim();if(!text)return {error:'Cole ou escreva um conteúdo antes de gerar o resumo.'};if(text.length>50000)return {error:'O material ultrapassa 50.000 caracteres. Reduza o texto manualmente; ele não será cortado automaticamente.'};if(text.length<20)return {error:'O material está muito curto. Insira pelo menos 20 caracteres para gerar um resumo útil.'};return {name,text,mode:'temporary',id:null,revision:null,updatedAt:null}}const a=activeContent();if(!a)return {error:'Nenhum conteúdo ativo selecionado. Salve um material em “Trocar conteúdo do espanhol” ou escolha “Inserir outro conteúdo”.'};if(a.text.length>50000)return {error:'O conteúdo ativo ultrapassa 50.000 caracteres. Edite o material para reduzir o tamanho; o texto não será cortado automaticamente.'};if(a.text.length<20)return {error:'O conteúdo ativo está muito curto. Adicione mais material ou use conteúdo temporário.'};return {...a,mode:'active'}}
+ function readConfig(){return {length:$('summaryLength').value,format:$('summaryFormat').value,goal:$('summaryGoal').value,highlights:{vocabulary:$('summaryVocabulary').checked,grammar:$('summaryGrammar').checked,definitions:$('summaryDefinitions').checked,examples:$('summaryExamples').checked}}}
+ function addText(parent,tag,text,cls){const el=document.createElement(tag);el.textContent=String(text??'');if(cls)el.className=cls;parent.appendChild(el);return el}
+ function normalizeSummary(data,source,config){return {id:String(data.id||('summary-'+Date.now())),title:String(data.title||('Resumo — '+source.name)).slice(0,200),summary:String(data.summary||''),keyPoints:Array.isArray(data.keyPoints)?data.keyPoints.filter(x=>typeof x==='string').slice(0,20):[],terms:Array.isArray(data.terms)?data.terms.filter(x=>x&&typeof x.spanish==='string'&&typeof x.meaning==='string').slice(0,30):[],sourceNotes:Array.isArray(data.sourceNotes)?data.sourceNotes.filter(x=>typeof x==='string').slice(0,10):[],reviewQuestions:Array.isArray(data.reviewQuestions)?data.reviewQuestions.filter(x=>typeof x==='string').slice(0,12):[],materialName:source.name,materialMode:source.mode,sourceId:source.id||null,sourceRevision:source.revision||null,sourceUpdatedAt:source.updatedAt||null,config,createdAt:data.createdAt||new Date().toISOString()}}
+ function summaryPlainText(x){let out=[x.title,'Material: '+x.materialName,'',x.summary];if(x.keyPoints.length)out.push('','Pontos principais',...x.keyPoints.map(v=>'• '+v));if(x.terms.length)out.push('','Vocabulário e termos',...x.terms.map(v=>v.spanish+' — '+v.meaning));if(x.sourceNotes.length)out.push('','Observações sobre o material',...x.sourceNotes.map(v=>'• '+v));if(x.reviewQuestions.length)out.push('','Perguntas de revisão',...x.reviewQuestions.map((v,i)=>(i+1)+'. '+v));return out.join('\n')}
+ function saveSummaryHistory(item){try{const list=readSummaryHistory();list.unshift(item);localStorage.setItem(HISTORY_KEY,JSON.stringify(list.slice(0,20)));renderSummaryHistory()}catch(_){setStatus('Resumo gerado, mas o navegador não permitiu salvar o histórico local.',true)}}
+ function readSummaryHistory(){try{const x=JSON.parse(localStorage.getItem(HISTORY_KEY)||'[]');return Array.isArray(x)?x:[]}catch(_){return []}}
+ function renderSummaryHistory(){const box=$('summaryHistoryList');if(!box)return;box.textContent='';const list=readSummaryHistory();if(!list.length){addText(box,'p','Nenhum resumo salvo neste navegador.');return}list.forEach(item=>{const row=document.createElement('div');row.className='summary-history-item';const details=document.createElement('div');details.style.minWidth='0';addText(details,'b',item.title||'Resumo sem título');addText(details,'p',new Date(item.createdAt).toLocaleString('pt-BR')+' · '+(item.materialName||'Material'));const actions=document.createElement('div');actions.style.display='flex';actions.style.gap='6px';actions.style.flexWrap='wrap';const open=document.createElement('button');open.className='btn outline';open.type='button';open.textContent='Abrir';open.onclick=()=>{lastSummary=item;lastSource={name:item.materialName||'Material',mode:item.materialMode||'history',text:''};lastConfig=item.config||null;renderSummaryResult(item);setStatus('Resumo anterior aberto. O histórico fica apenas neste navegador.')};const del=document.createElement('button');del.className='btn outline';del.type='button';del.textContent='Excluir';del.onclick=()=>{if(!confirm('Excluir este resumo do histórico local?'))return;const next=readSummaryHistory().filter(x=>x.id!==item.id);localStorage.setItem(HISTORY_KEY,JSON.stringify(next));renderSummaryHistory()};actions.append(open,del);row.append(details,actions);box.appendChild(row)})}
+ function renderSummaryResult(item){const box=$('summaryResultCard');box.textContent='';box.hidden=false;addText(box,'span','Resumo gerado por IA','pill');addText(box,'h2',item.title);const meta=addText(box,'p','Material utilizado: '+item.materialName+' · '+new Date(item.createdAt).toLocaleString('pt-BR'));meta.className='notice';addText(box,'h3','Resumo');addText(box,'p',item.summary);if(item.keyPoints.length){addText(box,'h3','Pontos principais');const ul=document.createElement('ul');item.keyPoints.forEach(v=>addText(ul,'li',v));box.appendChild(ul)}if(item.terms.length){addText(box,'h3','Vocabulário e termos importantes');item.terms.forEach(t=>{const row=document.createElement('div');row.className='summary-term';addText(row,'b',t.spanish);addText(row,'span',t.meaning);box.appendChild(row)})}if(item.sourceNotes.length){addText(box,'h3','Observações sobre o material');const ul=document.createElement('ul');item.sourceNotes.forEach(v=>addText(ul,'li',v));box.appendChild(ul)}if(item.reviewQuestions.length){addText(box,'h3','Perguntas para revisar');const ul=document.createElement('ul');item.reviewQuestions.forEach(v=>addText(ul,'li',v));box.appendChild(ul)}const actions=document.createElement('div');actions.className='fc-actions';actions.style.marginTop='20px';const copy=document.createElement('button');copy.className='btn';copy.textContent='Copiar resumo';copy.onclick=copyStudySummary;const again=document.createElement('button');again.className='btn outline';again.textContent='Gerar novamente';again.onclick=()=>generateStudySummary();const toFC=document.createElement('button');toFC.className='btn outline';toFC.textContent='Usar para flashcards';toFC.onclick=()=>useSummaryInFlashcards();const toExam=document.createElement('button');toExam.className='btn outline';toExam.textContent='Usar para simulado';toExam.onclick=()=>useSummaryInExam();actions.append(copy,again,toFC,toExam);box.appendChild(actions)}
+ window.generateStudySummary=async function(){if(summaryBusy)return;const source=sourceForGeneration();if(source.error){setStatus(source.error,true);return}const config=readConfig();summaryBusy=true;const btn=$('summaryGenerateBtn');btn.disabled=true;btn.textContent='Gerando resumo…';setStatus('A IA está analisando o material. Isso pode levar alguns segundos.');try{const response=await fetch('/api/summaries/generate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({materialName:source.name,material:source.text,sourceMode:source.mode,sourceId:source.id||null,sourceRevision:source.revision||null,sourceUpdatedAt:source.updatedAt||null,...config})});let data;try{data=await response.json()}catch(_){throw new Error('O servidor retornou uma resposta inválida.')}if(!response.ok)throw new Error(data.error||'Não foi possível gerar o resumo.');if(!data||typeof data.summary!=='string'||!data.summary.trim())throw new Error('A IA retornou um resumo vazio ou inválido. Tente novamente.');const item=normalizeSummary(data,source,config);if(item.summary.length<5)throw new Error('A resposta da IA está incompleta. Tente novamente.');lastSummary=item;lastSource=source;lastConfig=config;renderSummaryResult(item);saveSummaryHistory(item);setStatus('Resumo gerado por IA e salvo no histórico local deste navegador.');}catch(e){setStatus(e.message||'Erro de conexão. O resumo anterior foi preservado.',true)}finally{summaryBusy=false;btn.disabled=false;btn.textContent='✨ Gerar resumo com IA'}};
+ window.clearStudySummary=function(){if(!$('summaryResultCard').hidden&&!confirm('Limpar o resumo exibido? O histórico salvo não será apagado.'))return;$('summaryResultCard').hidden=true;$('summaryResultCard').textContent='';lastSummary=null;setStatus('Resultado limpo. O histórico local foi mantido.')}
+ window.copyStudySummary=async function(){if(!lastSummary){setStatus('Não há resumo para copiar.',true);return}const text=summaryPlainText(lastSummary);try{if(navigator.clipboard&&navigator.clipboard.writeText){await navigator.clipboard.writeText(text);setStatus('Resumo copiado para a área de transferência.')}else{const ta=document.createElement('textarea');ta.value=text;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();const ok=document.execCommand('copy');ta.remove();if(!ok)throw new Error();setStatus('Resumo copiado para a área de transferência.')}}catch(_){setStatus('Não foi possível copiar automaticamente. Selecione o texto do resumo e copie manualmente.',true)}};
+ window.clearStudySummaryHistory=function(){if(!confirm('Apagar todo o histórico de resumos deste navegador?'))return;try{localStorage.removeItem(HISTORY_KEY);renderSummaryHistory();setStatus('Histórico local apagado.')}catch(_){setStatus('Não foi possível apagar o histórico.',true)}};
+ window.useSummaryInFlashcards=function(){if(!lastSummary)return;const text=summaryPlainText(lastSummary);$('fcMaterialMode').value='temporary';$('aiFcTempName').value='Resumo: '+lastSummary.materialName;$('aiFcTempText').value=text;if(typeof window.updateAIFCSourceMode==='function')window.updateAIFCSourceMode();if(typeof window.updateAIFCTempCount==='function')window.updateAIFCTempCount();go('flashcards');};
+ window.useSummaryInExam=function(){if(!lastSummary)return;const text=summaryPlainText(lastSummary);$('examMaterialMode').value='temporary';$('examTempName').value='Resumo: '+lastSummary.materialName;$('examTempText').value=text;if(typeof window.updateExamSourceMode==='function')window.updateExamSourceMode();if(typeof window.updateExamTempCount==='function')window.updateExamTempCount();go('quiz');};
+ document.addEventListener('DOMContentLoaded',()=>{renderActiveSummaryInfo();renderSummaryHistory();updateSummaryTempCount();const text=$('activeStudyText');if(text)text.addEventListener('input',renderActiveSummaryInfo);const save=window.saveActiveStudyContent;if(typeof save==='function'&&!save.__summaryWrapped){const wrapped=function(replacing){const r=save(replacing);setTimeout(renderActiveSummaryInfo,0);return r};wrapped.__summaryWrapped=true;window.saveActiveStudyContent=wrapped}});
+})();
+</script>
+
+<script>
+/* StudyAI content integration layer: shared active source, revisions, cross-tab notifications. */
+(function(){
+  const KEY='studyaiActiveStudyContent';
+  function read(){try{const x=JSON.parse(localStorage.getItem(KEY)||'null');return x&&typeof x.text==='string'&&x.text.trim()?x:null}catch(_){return null}}
+  function signature(x){return x?String(x.id||'')+'|'+String(x.revision||0)+'|'+String(x.updatedAt||''):'none'}
+  let last=signature(read());
+  function refresh(){
+    const now=read(), sig=signature(now); if(sig===last)return; last=sig;
+    window.dispatchEvent(new CustomEvent('studyai:content-updated',{detail:now?{id:now.id||null,revision:now.revision||0,name:now.name||'Conteúdo de estudo',updatedAt:now.updatedAt||null}:null}));
+    ['updateAIFCSourceMode','updateExamSourceMode','updateSummarySourceMode'].forEach(fn=>{try{if(typeof window[fn]==='function'){if(fn==='updateAIFCSourceMode')window.updateAIFCSourceMode();else if(fn==='updateExamSourceMode')window.updateExamSourceMode();else {window.updateSummarySourceMode();}}}catch(_){}});
+    try{if(typeof window.renderMainActiveContent==='function')window.renderMainActiveContent()}catch(_){}
+    try{if(typeof window.renderActiveStudyContent==='function')window.renderActiveStudyContent()}catch(_){}
+    try{if(typeof window.updateAIFCSourceMode==='function')window.updateAIFCSourceMode()}catch(_){}
+    try{if(typeof window.renderConversationActive==='function')window.renderConversationActive()}catch(_){}
+    try{if(typeof window.renderActiveSummaryInfo==='function')window.renderActiveSummaryInfo()}catch(_){}
+    try{if(typeof window.updateAIExamSourceSummary==='function')window.updateAIExamSourceSummary()}catch(_){}
+    const notice=document.getElementById('studyAIIntegrationNotice');
+    if(notice){notice.hidden=false;notice.textContent=now?'O conteúdo ativo foi atualizado. Novas atividades usarão “'+String(now.name||'Conteúdo de estudo')+'” (versão '+String(now.revision||1)+'). Sessões em andamento continuam com a fonte original.':'O conteúdo ativo foi removido ou está indisponível. Sessões existentes mantêm a fonte que já utilizavam.';}
+  }
+  window.StudyAIContent={getActive:read,getSignature:()=>signature(read()),getRevision:()=>{const x=read();return x?{id:x.id||null,revision:x.revision||0,updatedAt:x.updatedAt||null,name:x.name||'Conteúdo de estudo'}:null}};
+  window.addEventListener('storage',e=>{if(e.key===KEY)refresh()});
+  window.addEventListener('studyai:content-updated',()=>{refresh();});
+  document.addEventListener('DOMContentLoaded',()=>{
+    if(!document.getElementById('studyAIIntegrationNotice')){
+      const n=document.createElement('div');n.id='studyAIIntegrationNotice';n.hidden=true;n.setAttribute('role','status');n.setAttribute('aria-live','polite');n.style.cssText='margin:10px auto;padding:10px 14px;max-width:1100px;border:1px solid var(--border, #d8dee8);border-radius:12px;background:var(--card, #fff);font-size:13px;line-height:1.45;';
+      const target=document.querySelector('main')||document.body;target.insertBefore(n,target.firstChild);
+    }
+  });
+})();
+</script>
+
+<script>
+/* StudyAI: o site inteiro segue o conteúdo ativo salvo em "Trocar conteúdo". */
+(function(){
+  const KEY='studyaiActiveStudyContent';
+  const $=id=>document.getElementById(id);
+  function active(){try{const x=JSON.parse(localStorage.getItem(KEY)||'null');return x&&typeof x.text==='string'&&x.text.trim()?x:null}catch(_){return null}}
+  function h2(text){return Array.from(document.querySelectorAll('h2')).find(h=>h.textContent.trim()===text)}
+  function headOf(text){const h=h2(text);return h?h.closest('.section-head')||h.parentElement:null}
+  function setHidden(el,v){if(el)el.hidden=!!v;if(el)el.style.display=v?'none':''}
+  function hideFollowing(head,v){if(!head)return;setHidden(head,v);let n=head.nextElementSibling;while(n){setHidden(n,v);n=n.nextElementSibling}}
+
+  const chatGrid=document.querySelector('#chat .grid');
+  const chatGridOriginal=chatGrid?chatGrid.innerHTML:'';
+  const chatGreet=document.querySelector('#messages .msg.ai');
+  const chatGreetOriginal=chatGreet?chatGreet.textContent:'';
+  const planOriginal=window.makePlan;
+  const voiceOriginal=window.startVoicePractice;
+  const voiceSelect=$('voiceContent');
+  const voiceSelectOriginal=voiceSelect?voiceSelect.innerHTML:'';
+
+  function chatSuggestions(on){
+    if(!chatGrid)return;
+    if(!on){chatGrid.innerHTML=chatGridOriginal;return}
+    const qs=['Faça um resumo curto do meu conteúdo.','Quais são as palavras e expressões mais importantes do material?','Crie 5 exercícios sobre o meu material e corrija depois.','Explique a parte mais difícil do conteúdo de forma simples.'];
+    chatGrid.textContent='';
+    qs.forEach(q=>{const c=document.createElement('div');c.className='card';const b=document.createElement('button');b.className='link';b.type='button';b.textContent=q;b.onclick=()=>ask(q);c.appendChild(b);chatGrid.appendChild(c)});
+    if(chatGreet&&document.querySelectorAll('#messages .msg').length===1)chatGreet.textContent='¡Hola! 👋 Estou usando o conteúdo que você salvou ("'+String(active().name||'Conteúdo de estudo').slice(0,60)+'"). Pergunte qualquer coisa sobre ele, peça exemplos ou exercícios.';
+  }
+
+  function applyVoice(on){
+    if(!voiceSelect)return;
+    if(on){const x=active();voiceSelect.innerHTML='';const o=document.createElement('option');o.value='ativo';o.textContent='Conteúdo ativo: '+String(x.name||'Conteúdo de estudo').slice(0,60);voiceSelect.appendChild(o);voiceSelect.disabled=true;flashcardContentLabels.ativo=String(x.name||'Conteúdo ativo').slice(0,60)}
+    else{voiceSelect.disabled=false;voiceSelect.innerHTML=voiceSelectOriginal}
+  }
+
+  function swapSides(front,back){
+    const es=/[ñ¿¡]/,pt=/[ãõç]/;
+    return (es.test(front)||pt.test(back))&&!(pt.test(front)||es.test(back));
+  }
+  window.startVoicePractice=async function(){
+    const x=active();
+    if(!x){return voiceOriginal()}
+    const status=$('voiceSetupStatus'),amountInput=$('voiceAmount');
+    let amount=Number(amountInput.value);if(!Number.isInteger(amount)||amount<1)amount=1;amount=Math.min(amount,12);amountInput.value=String(amount);
+    const ask=[5,10,15,20].find(n=>n>=amount)||20;
+    if(x.text.length>50000){status.textContent='O conteúdo ativo tem mais de 50.000 caracteres. Divida o material em partes menores.';return}
+    status.textContent='A IA está preparando as perguntas com o seu conteúdo…';
+    try{
+      const r=await fetch('/api/flashcards',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({materialName:String(x.name||'Conteúdo ativo'),material:x.text,amount:ask,type:'vocabulário',difficulty:'média',sourceMode:'ativo',sourceId:x.id||null,sourceRevision:x.revision||null,sourceUpdatedAt:x.updatedAt||null})});
+      let data;try{data=await r.json()}catch(_){throw new Error('O servidor retornou uma resposta inválida.')}
+      if(!r.ok)throw new Error(data.error||'Não foi possível preparar a prática.');
+      if(!Array.isArray(data.cards)||!data.cards.length)throw new Error('A IA não retornou perguntas. Tente novamente.');
+      let deck=data.cards.map(c=>{let f=String(c.front||''),b=String(c.back||'');if(swapSides(f,b)){const t=f;f=b;b=t}return [b,f,String(c.sourceReference||''),{meaning:f,usage:'',exampleEs:'',examplePt:'',note:''}]}).slice(0,amount);
+      voiceDeck=deck;voiceIndex=0;voiceCorrect=0;voiceResults=[];voiceEvaluated=false;
+      status.textContent='';
+      $('voiceSetup').hidden=true;$('voiceSummary').hidden=true;$('voiceExercise').hidden=false;renderVoiceQuestion();
+    }catch(e){status.textContent=e.message||'Erro de conexão. Tente novamente.'}
+  };
+
+  window.makePlan=function(){
+    const x=active();
+    if(!x)return planOriginal();
+    const daysField=$('days'),raw=daysField.value,days=Number(raw),mins=Number($('minutes').value),result=$('planResult');
+    if(!/^[0-9]+$/.test(raw)||!Number.isSafeInteger(days)||days<1||days>365){result.innerHTML='<p role="alert" style="color:#b42318;font-weight:700">Digite um número inteiro entre 1 e 365 dias para criar seu plano.</p>';daysField.focus();return}
+    const lines=x.text.split(/\r?\n/).map(s=>s.trim()).filter(Boolean);
+    const cut=(s,n)=>s.length>n?s.slice(0,n-1)+'…':s;
+    const studyDays=days===1?1:days-1;
+    const size=Math.max(1,Math.ceil(lines.length/studyDays));
+    const tasks=[];
+    for(let i=0;i<studyDays;i++){
+      const chunk=lines.slice(i*size,(i+1)*size);
+      if(chunk.length){tasks.push(['Dia '+(i+1),'Estudar: '+cut(chunk[0],70),'Leia e anote os pontos principais desta parte: '+chunk.slice(0,3).map(l=>'“'+cut(l,80)+'”').join(' · ')+'. Depois responda perguntas sobre o trecho sem olhar o material.'])}
+      else{tasks.push(['Dia '+(i+1),'Revisão do conteúdo','Releia o material salvo, gere flashcards com IA e converse com a IA sobre as partes em que você tem dúvida.'])}
+    }
+    if(days>1)tasks.push(['Dia '+days,'Revisão final + simulado','Gere um simulado com IA com o conteúdo salvo, revise os erros e treine a fala na aba “Falar e praticar”.']);
+    result.innerHTML='<span class="pill">'+days+' dias • '+mins+' min/dia</span><div style="margin-top:12px">'+tasks.map((t,i)=>'<div class="list-item"><div class="dot">'+(i+1)+'</div><div><b></b><small></small></div></div>').join('')+'</div><p class="notice">Plano criado a partir do conteúdo: '+'<span id="planSrcName"></span>. Dica: faça pausas curtas e tente lembrar das respostas sem olhar o resumo.</p>';
+    const items=result.querySelectorAll('.list-item');
+    tasks.forEach((t,i)=>{const b=items[i].querySelector('b'),s=items[i].querySelector('small');b.textContent=t[0]+' — '+t[1];s.textContent=t[2]+'  ⏱️ Sugestão: '+mins+' minutos'});
+    const nm=$('planSrcName');if(nm)nm.textContent=String(x.name||'Conteúdo de estudo');
+  };
+
+  function apply(){
+    const x=active(),on=!!x;
+    // Início: tira o bloco com o conteúdo antigo
+    const cont=headOf('Continue de onde parou');if(cont){setHidden(cont,on);setHidden(cont.nextElementSibling,on)}
+    // Flashcards: esconde o baralho antigo (os cartões que você cria continuam)
+    const fcHead=headOf('Flashcards manuais');
+    if(fcHead){setHidden(fcHead,on);setHidden(fcHead.nextElementSibling,on);setHidden($('flashcardSetup'),on);const f=$('flashcard');if(f)setHidden(f.closest('.card'),on);setHidden($('fcSessionSummary'),on)}
+    // Praticar: esconde os exercícios predefinidos antigos
+    hideFollowing(headOf('Exercícios rápidos'),on);
+    chatSuggestions(on);
+    applyVoice(on);
+  }
+  window.studyaiApplyContent=apply;
+  window.addEventListener('studyai:content-updated',apply);
+  window.addEventListener('storage',e=>{if(e.key===KEY)apply()});
+  document.addEventListener('DOMContentLoaded',apply);
+  if(document.readyState!=='loading')apply();
+})();
+</script>
+
+<script>
+/* StudyAI: visual mais limpo. Os campos continuam existindo (ids intactos); só ficam escondidos ou dentro de "Mais opções". */
+(function(){
+  const $=id=>document.getElementById(id);
+  const hide=el=>{if(el){el.hidden=true;el.style.display='none'}};
+  function unit(id){
+    const el=$(id);if(!el)return[];
+    const p=el.parentElement;
+    if(p&&p.tagName==='DIV'&&p.parentElement&&p.parentElement.classList.contains('editor-field-grid'))return[p];
+    const lab=document.querySelector('label[for="'+id+'"]');
+    return[lab,el].filter(Boolean);
+  }
+  function hideField(id){unit(id).forEach(hide)}
+  function moreOptions(ids,beforeEl,label){
+    if(!beforeEl)return;
+    const units=[];ids.forEach(id=>{if(id.startsWith('.')){const e=document.querySelector(id);if(e)units.push(e)}else unit(id).forEach(u=>units.push(u))});
+    if(!units.length)return;
+    const d=document.createElement('details');d.className='more-opts';
+    const sm=document.createElement('summary');sm.textContent=label||'Mais opções';d.appendChild(sm);
+    const body=document.createElement('div');body.className='more-body';
+    if(units.every(u=>u.tagName==='DIV'&&!u.classList.contains('summary-checks')))body.className+=' editor-field-grid';
+    units.forEach(u=>body.appendChild(u));d.appendChild(body);
+    beforeEl.parentNode.insertBefore(d,beforeEl);
+  }
+  function wrapDetails(el,label){
+    if(!el)return;const d=document.createElement('details');d.className='hist-wrap';
+    const sm=document.createElement('summary');sm.textContent=label;d.appendChild(sm);
+    el.parentNode.insertBefore(d,el);d.appendChild(el);
+  }
+  function fixLayout(grid){if(grid&&!Array.from(grid.children).some(c=>c.style.display!=='none'&&!c.hidden))hide(grid)}
+
+  /* textos curtos */
+  const subs={resumosIA:'Resuma o conteúdo que você salvou.',chat:'Pergunte qualquer coisa sobre o seu conteúdo.',flashcards:'Gere cartões com o seu conteúdo.',voz:'Responda em voz alta, em espanhol, e receba feedback.',conversaIA:'Converse em espanhol e receba correções.',quiz:'Gere simulados com o seu conteúdo.',plano:'Monte uma rotina de revisão.'};
+  Object.keys(subs).forEach(k=>{const e=document.querySelector('#'+k+' .subtitle');if(e)e.textContent=subs[k]});
+
+  /* botões "Trocar conteúdo" por página saem; fica só o botão fixo de baixo */
+  document.querySelectorAll('button[onclick*="openActiveStudyEditor"]').forEach(hide);
+
+  /* mensagens de apoio vazias (aparecem quando houver status/erro) */
+  ['aiFcStatus','examStatus','summaryStatus','convSetupStatus','voiceSetupStatus','convMicStatus'].forEach(id=>{const e=$(id);if(e)e.textContent=''});
+
+  /* RESUMO */
+  hide($('summaryActiveInfo')&&$('summaryActiveInfo').closest('.card'));
+  hideField('summarySourceMode');
+  moreOptions(['summaryFormat','summaryGoal','.summary-checks'],$('summaryGenerateBtn')&&$('summaryGenerateBtn').parentElement,'Mais opções do resumo');
+  const sh=$('summaryResultCard');
+  { const h=$('summaryHistoryCard'); if(h) wrapDetails(h,'Histórico de resumos'); }
+  document.querySelectorAll('#resumosIA .section-head span').forEach(hide);
+  { const h=Array.from(document.querySelectorAll('#resumosIA h2')).find(x=>x.textContent.trim()==='Personalize o resumo'); if(h)hide(h.closest('.section-head')); }
+
+  /* FLASHCARDS */
+  { const h=Array.from(document.querySelectorAll('#flashcards h2')).find(x=>x.textContent.trim()==='Conteúdo para estudar'); if(h)hide(h.closest('.section-head')); }
+  hide($('fcActiveMaterialSummary'));hide($('fcActiveMaterialDetails'));
+  hideField('fcMaterialMode');
+  moreOptions(['aiFcType','aiFcDifficulty'],$('fcActiveActions'),'Mais opções dos cartões');
+  { const mh=Array.from(document.querySelectorAll('#flashcards h2')).find(x=>x.textContent.trim()==='Crie seu próprio cartão');
+    if(mh){const head=mh.closest('.section-head'),card=head.nextElementSibling;const d=document.createElement('details');d.className='hist-wrap';const sm=document.createElement('summary');sm.textContent='Criar cartão manual';d.appendChild(sm);head.parentNode.insertBefore(d,head);hide(head);if(card)d.appendChild(card);} }
+
+  /* SIMULADO */
+  hide($('examActiveSummary'));
+  { const dd=$('examActiveFull'); if(dd)hide(dd.closest('details')); }
+  hideField('examMaterialMode');
+  moreOptions(['examType','examDifficulty','examFocus','examMode'],$('examGenerateBtn')&&$('examGenerateBtn').parentElement,'Mais opções do simulado');
+  { const c=$('aiExamHistoryCard'); if(c) wrapDetails(c,'Histórico de simulados'); }
+  document.querySelectorAll('#quiz #aiExamSetup .section-head span').forEach(hide);
+  { const g=document.querySelector('#aiExamSetup .editor-field-grid'); if(g)g.style.marginTop='6px'; }
+
+  /* FALAR E PRATICAR */
+  hideField('voiceContent');
+  { const p=document.querySelector('#voiceSetup p'); if(p)p.textContent='Escolha quantas perguntas quer responder. A pergunta aparece em português; responda em espanhol.'; }
+
+  /* CONVERSAÇÃO */
+  hide($('convActiveMaterial'));
+  { const dd=$('convActiveFull'); if(dd)hide(dd.closest('details')); }
+  moreOptions(['convMode','convLevel','convScenario','convCorrections'],$('convStartBtn')&&$('convStartBtn').parentElement,'Mais opções da conversa');
+  { const g=document.querySelector('#conversationSetup .editor-field-grid'); fixLayout(g); }
+  document.querySelectorAll('#conversationSetup .section-head span').forEach(hide);
+  { const v=$('convVoiceLocale'); if(v){const g=v.closest('.editor-field-grid'); if(g){const d=document.createElement('details');d.className='more-opts';const sm=document.createElement('summary');sm.textContent='Opções de voz';d.appendChild(sm);g.parentNode.insertBefore(d,g);d.appendChild(g);}} }
+  { const pb=Array.from(document.querySelectorAll('#conversaIA h3')).find(x=>x.textContent.trim()==='Privacidade e compatibilidade'); if(pb)wrapDetails(pb.closest('.card'),'Privacidade'); }
+  /* com conteúdo salvo, a conversa já começa baseada nele */
+  function convDefault(){const m=$('convMode');if(!m)return;let x=null;try{x=JSON.parse(localStorage.getItem('studyaiActiveStudyContent')||'null')}catch(_){}
+    const has=!!(x&&typeof x.text==='string'&&x.text.trim());if(has&&m.value==='livre')m.value='material'}
+  convDefault();
+  window.addEventListener('studyai:content-updated',convDefault);
+
+  /* PLANO */
+  { const h=Array.from(document.querySelectorAll('#plano h2')).find(x=>x.textContent.trim()==='Seu cronograma'); if(h)hide(h.closest('.section-head')); }
+  { const d=$('daysHelp'); if(d)d.style.display='none'; }
+
+  /* CHAT: aviso fixo some */
+  document.querySelectorAll('#chat .chatbox .notice').forEach(hide);
+})();
+</script>
+
+</body>
+</html>

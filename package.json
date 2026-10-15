@@ -1,0 +1,17 @@
+{
+  "name": "studyai-espanhol2",
+  "version": "1.1.0",
+  "private": true,
+  "type": "module",
+  "description": "StudyAI Espanhol com API OpenRouter",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2"
+  }
+}
